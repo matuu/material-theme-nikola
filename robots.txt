@@ -1,2 +1,2 @@
-Sitemap: https://example.com/sitemapindex.xml
+Sitemap: http://matuu.github.io/material-theme-nikola/sitemapindex.xml
 

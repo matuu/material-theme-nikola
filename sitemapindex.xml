@@ -5,51 +5,51 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
-  <loc>https://example.com/categories/blog.xml</loc>
-  <lastmod>2015-07-21</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://example.com/categories/cat_nikola.xml</loc>
-  <lastmod>2015-07-21</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://example.com/categories/cat_otra-categoria.xml</loc>
+  <loc>http://matuu.github.io/material-theme-nikola/categories/blog.xml</loc>
   <lastmod>2015-07-26</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://example.com/categories/demo.xml</loc>
-  <lastmod>2015-07-21</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://example.com/categories/nikola.xml</loc>
-  <lastmod>2015-07-21</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://example.com/categories/python.xml</loc>
-  <lastmod>2015-07-21</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://example.com/categories/tags-1.xml</loc>
+  <loc>http://matuu.github.io/material-theme-nikola/categories/cat_nikola.xml</loc>
   <lastmod>2015-07-26</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://example.com/categories/tags-2.xml</loc>
+  <loc>http://matuu.github.io/material-theme-nikola/categories/cat_otra-categoria.xml</loc>
   <lastmod>2015-07-26</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://example.com/galleries/demo/rss.xml</loc>
+  <loc>http://matuu.github.io/material-theme-nikola/categories/demo.xml</loc>
   <lastmod>2015-07-26</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://example.com/galleries/rss.xml</loc>
+  <loc>http://matuu.github.io/material-theme-nikola/categories/nikola.xml</loc>
   <lastmod>2015-07-26</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://example.com/rss.xml</loc>
+  <loc>http://matuu.github.io/material-theme-nikola/categories/python.xml</loc>
   <lastmod>2015-07-26</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://example.com/sitemap.xml</loc>
+  <loc>http://matuu.github.io/material-theme-nikola/categories/tags-1.xml</loc>
+  <lastmod>2015-07-26</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://matuu.github.io/material-theme-nikola/categories/tags-2.xml</loc>
+  <lastmod>2015-07-26</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://matuu.github.io/material-theme-nikola/galleries/demo/rss.xml</loc>
+  <lastmod>2015-07-26</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://matuu.github.io/material-theme-nikola/galleries/rss.xml</loc>
+  <lastmod>2015-07-26</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://matuu.github.io/material-theme-nikola/rss.xml</loc>
+  <lastmod>2015-07-26</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://matuu.github.io/material-theme-nikola/sitemap.xml</loc>
   <lastmod>2015-07-26</lastmod>
  </sitemap>
 </sitemapindex>
