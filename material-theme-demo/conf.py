@@ -17,18 +17,16 @@ import time
 
 
 # Data about this site
-BLOG_AUTHOR = "Matias Varela"  # (translatable)
-BLOG_TITLE = "Material Theme"  # (translatable)
+BLOG_AUTHOR = "matuu"  # (translatable)
+BLOG_TITLE = "Material Theme Demo"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link
-SITE_URL = "https://example.com/"
+SITE_URL = "http://matuu.github.io/material-theme-nikola/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "https://example.com/"
 BLOG_EMAIL = "matu.varela@gmail.com"
 BLOG_DESCRIPTION = "This is a demo site for Nikola."  # (translatable)
-
-BLOG_AVATAR = "/images/avatar.jpg"
 
 # Nikola is multilingual!
 #
