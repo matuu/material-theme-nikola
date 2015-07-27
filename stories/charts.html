@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charts | Material Theme</title>
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/roboto.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/material.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ripples.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Raleway%7CBangers" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="https://example.com/stories/charts.html">
+<!--[if lt IE 9]>
+            <script src="../assets/js/html5shiv.min.js"></script>
+            <script src="../assets/js/respond.min.js"></script>
+        <![endif]--><meta name="author" content="Matias Varela">
+<meta property="og:site_name" content="Material Theme">
+<meta property="og:title" content="Charts">
+<meta property="og:url" content="https://example.com/stories/charts.html">
+<meta property="og:description" content="If you are using reStructuredText and install pygal, Nikola has support for rather nice charts
+with little effort, and i's even semi-interactive (hover your pointer over the legend!):
+.. chart:: Stack">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2013-08-27T18:20:55-03:00">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar header-panel shadow-z-3" role="navigation"><div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-3">
+                    
+<!-- Custom search with Google-->
+<form id="search" action="//www.google.com/search" method="get" class="navbar-form">
+<input type="hidden" name="q" value="site:https://example.com/"><input type="text" name="q" class="form-control col-lg-8" maxlength="255" results="0" placeholder="Search">
+</form>
+<!-- End of custom search -->
+
+            <h1>
+                <a href="https://example.com/">
+                        <span id="blog-title">Material Theme</span>
+                    </a>
+            </h1>
+          </div>
+        </div>
+      </div>
+<!-- /.container-fluid -->
+</nav><div class="container-fluid main" id="content" role="main">
+        <div class="row">
+            <nav class="col-xs-3 menu"><ul>
+<li class="withripple" data-target="/archive.html">Archivo<div class="ripple-wrapper"></div>
+</li>
+                <li class="withripple" data-target="/categories/index.html">Etiquetas<div class="ripple-wrapper"></div>
+</li>
+                <li class="withripple" data-target="/rss.xml">Canal RSS<div class="ripple-wrapper"></div>
+</li>
+
+                    
+                </ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="charts.txt" id="sourcelink">Código fuente</a>
+    </li>
+                    
+                </ul></nav><div class="posts-material col-xs-9">
+                <div class="col-xs-11 content-material">
+<article class="storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Charts</a></h1>
+
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>If you are using reStructuredText and install pygal, Nikola has support for rather nice charts
+with little effort, and i's even semi-interactive (hover your pointer over the legend!):</p>
+<pre class="code rest"><a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-1"></a><span class="p">..</span> <span class="ow">chart</span><span class="p">::</span> StackedLine
+<a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-2"></a>   <span class="nc">:title:</span> <span class="nf">'Browser usage evolution (in %)'</span>
+<a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-3"></a>   <span class="nc">:fill:</span> <span class="nf">True</span>
+<a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-4"></a>   <span class="nc">:x_labels:</span> <span class="nf">['2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012']</span>
+<a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-5"></a>   <span class="nc">:width:</span> <span class="nf">600</span>
+<a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-6"></a>   <span class="nc">:height:</span> <span class="nf">400</span>
+<a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-7"></a>   <span class="nc">:explicit_size:</span> <span class="nf">True</span>
+<a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-8"></a>   <span class="nc">:style:</span> <span class="nf">BlueStyle</span>
+<a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-9"></a>
+<a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-10"></a>   ('Others',  [14.2, 15.4, 15.3,  8.9,    9, 10.4,  8.9,  5.8,  6.7,  6.8,  7.5])
+<a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-11"></a>   ('IE',      [85.8, 84.6, 84.7, 74.5,   66, 58.6, 54.7, 44.8, 36.2, 26.6, 20.1])
+<a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-12"></a>   ('Firefox', [None, None, None, 16.6,   25,   31, 36.4, 45.5, 46.3, 42.8, 37.1])
+<a name="rest_code_dbf8ceead071481e97c2c7453a1918f8-13"></a>   ('Chrome',  [None, None, None, None, None, None,    0,  3.9, 10.8, 23.8, 35.3])
+</pre>
+<div style="text-align: center;"><div class="text-error">In order to use the Chart directive, you must install the "pygal" Python package.</div></div>
+<p>Here's how it works:</p>
+<ul class="simple">
+<li>Next to the directive, use the <a class="reference external" href="http://pygal.org/chart_types/">chart type you want</a>
+</li>
+<li>Any option you can set in a chart? Use it like <tt class="docutils literal">:title:</tt> in this example. Syntax on
+the value is just like in the pygal examples.</li>
+<li>For each data series do it like the line that says <tt class="docutils literal">Firefox</tt> in this example. The first element
+is the label, then comes the data.</li>
+</ul>
+<p>Easy, right? Please explore <a class="reference external" href="http://pygal.org">the pygal site</a> for more information, and just
+take this example and tweak stuff.</p>
+</div>
+    </div>
+    
+</article>
+</div>
+            </div>
+        </div>
+        <button class="btn btn-fab btn-raised btn-material-green btn-footer" data-toggle="modal" data-target="#footer-dialog">
+            <i class="mdi-communication-message"></i>
+        </button>
+        <div id="footer-dialog" class="modal fade" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Material Theme credits</h4>
+              </div>
+              <div class="modal-body">
+                    Contents © 2015         <a href="mailto:matu.varela@gmail.com">Matias Varela</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+                    
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Ok</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer row shadow-z-1" style="display:none"></footer>
+</div>
+
+            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/ripples.min.js"></script><script src="../assets/js/material.min.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script src="../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>
+
+            $(document).ready(function() {
+                // This command is used to initialize some elements and make them work properly
+                $.material.init();
+            });
+
+             $(window).on("resize", function() {
+                $("html, body").height($(window).height());
+                $(".main, .menu").height($(window).height() - $(".header-panel").outerHeight() - 76 ); // footer margin: $("footer.footer").outerHeight()
+                $(".posts-material").height($(window).height());
+              }).trigger("resize");
+
+             $(".menu li").click(function() {
+                // Menu
+                if (!$(this).data("target")) return;
+                if ($(this).is(".active")) return;
+                $(".menu li").not($(this)).removeClass("active");
+                window.page = $(this).data("target");
+                setTimeout(function() {
+                    window.location.href= window.page;
+                }, 500);
+            });
+        </script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

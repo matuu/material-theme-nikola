@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Creating a Theme | Material Theme</title>
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/roboto.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/material.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ripples.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Raleway%7CBangers" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="https://example.com/stories/creating-a-theme.html">
+<!--[if lt IE 9]>
+            <script src="../assets/js/html5shiv.min.js"></script>
+            <script src="../assets/js/respond.min.js"></script>
+        <![endif]--><meta name="author" content="Matias Varela">
+<meta property="og:site_name" content="Material Theme">
+<meta property="og:title" content="Creating a Theme">
+<meta property="og:url" content="https://example.com/stories/creating-a-theme.html">
+<meta property="og:description" content="There is some documentation about creating themes for Nikola, but maybe a tutorial is also a useful way
+to explain it. So, here it is. I'll explain how to create a theme (almost) from scratch. All the">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2012-03-13T12:00:00-03:00">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar header-panel shadow-z-3" role="navigation"><div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-3">
+                    
+<!-- Custom search with Google-->
+<form id="search" action="//www.google.com/search" method="get" class="navbar-form">
+<input type="hidden" name="q" value="site:https://example.com/"><input type="text" name="q" class="form-control col-lg-8" maxlength="255" results="0" placeholder="Search">
+</form>
+<!-- End of custom search -->
+
+            <h1>
+                <a href="https://example.com/">
+                        <span id="blog-title">Material Theme</span>
+                    </a>
+            </h1>
+          </div>
+        </div>
+      </div>
+<!-- /.container-fluid -->
+</nav><div class="container-fluid main" id="content" role="main">
+        <div class="row">
+            <nav class="col-xs-3 menu"><ul>
+<li class="withripple" data-target="/archive.html">Archivo<div class="ripple-wrapper"></div>
+</li>
+                <li class="withripple" data-target="/categories/index.html">Etiquetas<div class="ripple-wrapper"></div>
+</li>
+                <li class="withripple" data-target="/rss.xml">Canal RSS<div class="ripple-wrapper"></div>
+</li>
+
+                    
+                </ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="creating-a-theme.rst" id="sourcelink">Código fuente</a>
+    </li>
+                    
+                </ul></nav><div class="posts-material col-xs-9">
+                <div class="col-xs-11 content-material">
+<article class="storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Creating a Theme</a></h1>
+
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p class="lead">There is some documentation about creating themes for Nikola, but maybe a tutorial is also a useful way
+to explain it. So, here it is. I'll explain how to create a theme (almost) from scratch. All themes
+in Nikola must inherit from the <tt class="docutils literal">base</tt> theme. In this case, we will inherit from <tt class="docutils literal">bootstrap</tt>
+so we get good support for slides and galleries.</p>
+<p>I will try to create a theme that looks like <a class="reference external" href="http://wordpress.org/themes/monospace">Vinicius Massuchetto's Monospace Theme</a>.</p>
+<div class="danger">
+<p class="first admonition-title">!DANGER!</p>
+<p class="last">This document is outdated!  Recommendations in this post may not work!</p>
+</div>
+<!-- TEASER_END -->
+<div class="section" id="starting-the-theme">
+<h2>Starting The Theme</h2>
+<p>First we will create a testing site:</p>
+<pre class="literal-block">
+$ nikola init --demo monospace-site
+A new site with some sample data has been created at monospace-site.
+See README.txt in that folder for more information.
+
+$ cd monospace-site/
+</pre>
+<p>Our theme will inherit from the <tt class="docutils literal">bootstrap</tt> theme, which is full-featured but boring.</p>
+<pre class="literal-block">
+$ mkdir themes
+$ mkdir themes/monospace
+$ echo bootstrap &gt; themes/monospace/parent
+</pre>
+<p>The next step is to make the testing site use this new theme, by editing <tt class="docutils literal">conf.py</tt> and
+changing the <tt class="docutils literal">THEME</tt> option:</p>
+<pre class="literal-block">
+# Name of the theme to use. Themes are located in themes/theme_name
+THEME = 'monospace'
+</pre>
+<p>Now we can already build and test the site:</p>
+<pre class="literal-block">
+$ nikola build &amp;&amp; nikola serve
+</pre>
+<div class="figure">
+<img alt="http://ralsina.me/galleries/monospace-tut/monospace-1.png" src="http://ralsina.me/galleries/monospace-tut/monospace-1.png" style="height: 400px;"><p class="caption">This is the default "bootstrap" theme.</p>
+</div>
+<p>Of course, the page layout is completely different from what we want. To fix that, we need to
+get into templates.</p>
+</div>
+<div class="section" id="templates-page-layout">
+<h2>Templates: Page Layout</h2>
+<p>The general page layout for the theme is done by the <tt class="docutils literal">base.tmpl</tt> template, which is done using
+<a class="reference external" href="http://www.makotemplates.org/">Mako</a>. This is bootstrap's <tt class="docutils literal">base.tmpl</tt>, it's not very big:</p>
+<pre class="code mako"><a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-1"></a><span class="cp">## -*- coding: utf-8 -*-</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-2"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"base"</span> <span class="na">file=</span><span class="s">"base_helper.tmpl"</span> <span class="na">import=</span><span class="s">"*"</span> <span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-3"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"bootstrap"</span> <span class="na">file=</span><span class="s">"bootstrap_helper.tmpl"</span> <span class="na">import=</span><span class="s">"*"</span> <span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-4"></a><span class="cp">${</span><span class="n">set_locale</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-5"></a><span class="x">&lt;!DOCTYPE html&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-6"></a><span class="x">&lt;html% if comment_system == 'facebook': xmlns:fb="http://ogp.me/ns/fb#" %endif lang="</span><span class="cp">${</span><span class="n">lang</span><span class="cp">}</span><span class="x">"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-7"></a><span class="x">&lt;head&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-8"></a><span class="x">    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-9"></a><span class="x">    </span><span class="cp">${</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">html_head</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-10"></a><span class="x">    </span><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"extra_head"</span><span class="cp">&gt;</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-11"></a><span class="x">    </span><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-12"></a><span class="x">    </span><span class="cp">${</span><span class="n">extra_head_data</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-13"></a><span class="x">&lt;/head&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-14"></a><span class="x">&lt;body&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-15"></a><span class="x">&lt;!-- Menubar --&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-16"></a><span class="x">&lt;div class="navbar navbar-fixed-top" id="navbar"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-17"></a><span class="x">    &lt;div class="navbar-inner"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-18"></a><span class="x">        &lt;div class="container"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-19"></a>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-20"></a><span class="x">        &lt;!-- .btn-navbar is used as the toggle for collapsed navbar content --&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-21"></a><span class="x">        &lt;a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-22"></a><span class="x">            &lt;span class="icon-bar"&gt;&lt;/span&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-23"></a><span class="x">            &lt;span class="icon-bar"&gt;&lt;/span&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-24"></a><span class="x">            &lt;span class="icon-bar"&gt;&lt;/span&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-25"></a><span class="x">        &lt;/a&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-26"></a>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-27"></a><span class="x">            &lt;a class="brand" href="</span><span class="cp">${</span><span class="n">abs_link</span><span class="p">(</span><span class="s">'/'</span><span class="p">)</span><span class="cp">}</span><span class="x">"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-28"></a><span class="x">            </span><span class="cp">${</span><span class="n">blog_title</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-29"></a><span class="x">            &lt;/a&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-30"></a><span class="x">            &lt;!-- Everything you want hidden at 940px or less, place within here --&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-31"></a><span class="x">            &lt;div class="nav-collapse collapse"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-32"></a><span class="x">                &lt;ul class="nav"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-33"></a><span class="x">                    </span><span class="cp">${</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">html_navigation_links</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-34"></a><span class="x">                &lt;/ul&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-35"></a>                <span class="cp">%</span><span class="k">if</span> <span class="n">search_form</span><span class="p">:</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-36"></a><span class="x">                    </span><span class="cp">${</span><span class="n">search_form</span><span class="cp">}</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-37"></a>                <span class="cp">%</span><span class="k">endif</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-38"></a><span class="x">                &lt;ul class="nav pull-right"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-39"></a><span class="x">                </span><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"belowtitle"</span><span class="cp">&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-40"></a>                <span class="cp">%</span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">translations</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-41"></a><span class="x">                    &lt;li&gt;</span><span class="cp">${</span><span class="n">base</span><span class="o">.</span><span class="n">html_translations</span><span class="p">()</span><span class="cp">}</span><span class="x">&lt;/li&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-42"></a>                <span class="cp">%</span><span class="k">endif</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-43"></a><span class="x">                </span><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-44"></a>                <span class="cp">%</span> <span class="k">if</span> <span class="n">show_sourcelink</span><span class="p">:</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-45"></a><span class="x">                    &lt;li&gt;</span><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"sourcelink"</span><span class="cp">&gt;&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span><span class="x">&lt;/li&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-46"></a>                <span class="cp">%</span><span class="k">endif</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-47"></a><span class="x">                &lt;/ul&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-48"></a><span class="x">            &lt;/div&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-49"></a><span class="x">        &lt;/div&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-50"></a><span class="x">    &lt;/div&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-51"></a><span class="x">&lt;/div&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-52"></a><span class="x">&lt;!-- End of Menubar --&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-53"></a><span class="x">&lt;div class="container-fluid" id="container-fluid"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-54"></a><span class="x">    &lt;!--Body content--&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-55"></a><span class="x">    &lt;div class="row-fluid"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-56"></a><span class="x">    &lt;div class="span2"&gt;&lt;/div&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-57"></a><span class="x">    &lt;div class="span8"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-58"></a><span class="x">    </span><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"content"</span><span class="cp">&gt;&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-59"></a><span class="x">    &lt;/div&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-60"></a><span class="x">    &lt;/div&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-61"></a><span class="x">    &lt;!--End of body content--&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-62"></a><span class="x">&lt;/div&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-63"></a><span class="x">&lt;div class="footerbox"&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-64"></a><span class="x">    </span><span class="cp">${</span><span class="n">content_footer</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-65"></a><span class="x">&lt;/div&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-66"></a><span class="cp">${</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">late_load_js</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-67"></a><span class="cp">${</span><span class="n">base</span><span class="o">.</span><span class="n">html_social</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-68"></a><span class="x">    &lt;script&gt;jQuery("a.image-reference").colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-69"></a><span class="x">    $(window).on('hashchange', function(){</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-70"></a><span class="x">        if (location.hash &amp;&amp; $(location.hash)[0]) {</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-71"></a><span class="x">            $('body').animate({scrollTop: $(location.hash).offset().top - $('#navbar').outerHeight(true)*1.2 }, 1);</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-72"></a><span class="x">        }</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-73"></a><span class="x">    });</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-74"></a><span class="x">    $(document).ready(function(){$(window).trigger('hashchange')});</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-75"></a><span class="x">    &lt;/script&gt;</span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-76"></a><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"extra_js"</span><span class="cp">&gt;&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-77"></a><span class="cp">${</span><span class="n">body_end</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_c6b8d8b79a8249e5b17148e97bfcfc12-78"></a><span class="x">&lt;/body&gt;</span>
+</pre>
+<p>It's basically a HTML document with some placeholders to be replaced with actual content, configuration options, and some helper functions.
+For example, the <tt class="docutils literal">html_head</tt> helper can be used to add CSS or JS files in all document's <tt class="docutils literal">head</tt> tags.</p>
+<p>Monospace is a two-column-with-footer layout, so let's copy the basics from its HTML and see what happens:</p>
+<pre class="code mako"><a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-1"></a><span class="cp">## -*- coding: utf-8 -*-</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-2"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"base"</span> <span class="na">file=</span><span class="s">"base_helper.tmpl"</span> <span class="na">import=</span><span class="s">"*"</span><span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-3"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"bootstrap"</span> <span class="na">file=</span><span class="s">"bootstrap_helper.tmpl"</span> <span class="na">import=</span><span class="s">"*"</span> <span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-4"></a><span class="cp">${</span><span class="n">set_locale</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-5"></a><span class="x">&lt;!DOCTYPE html&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-6"></a><span class="x">&lt;html lang="</span><span class="cp">${</span><span class="n">lang</span><span class="cp">}</span><span class="x">"&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-7"></a><span class="x">&lt;head&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-8"></a><span class="x">    </span><span class="cp">${</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">html_head</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-9"></a><span class="x">    </span><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"extra_head"</span><span class="cp">&gt;</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-10"></a><span class="x">    </span><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-11"></a><span class="x">    </span><span class="cp">${</span><span class="n">extra_head_data</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-12"></a><span class="x">&lt;/head&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-13"></a><span class="x">&lt;body class="home blog"&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-14"></a><span class="x">    &lt;div id="wrap" style="width:850px"&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-15"></a><span class="x">        &lt;div id="container" style="width:560px"&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-16"></a><span class="x">            </span><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"content"</span><span class="cp">&gt;&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-17"></a><span class="x">        &lt;/div&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-18"></a><span class="x">        &lt;div id="sidebar"&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-19"></a><span class="x">            &lt;!--Sidebar content--&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-20"></a><span class="x">            &lt;h1 id="blog-title"&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-21"></a><span class="x">                &lt;a href="</span><span class="cp">${</span><span class="n">abs_link</span><span class="p">(</span><span class="s">'/'</span><span class="p">)</span><span class="cp">}</span><span class="x">" title="</span><span class="cp">${</span><span class="n">blog_title</span><span class="cp">}</span><span class="x">"&gt;</span><span class="cp">${</span><span class="n">blog_title</span><span class="cp">}</span><span class="x">&lt;/a&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-22"></a><span class="x">            &lt;/h1&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-23"></a><span class="x">            </span><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"belowtitle"</span><span class="cp">&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-24"></a>            <span class="cp">%</span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">translations</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-25"></a><span class="x">            &lt;small&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-26"></a><span class="x">                </span><span class="cp">${</span><span class="p">(</span><span class="n">messages</span><span class="p">(</span><span class="s">"Also available in"</span><span class="p">))</span><span class="cp">}</span><span class="x">:&amp;nbsp;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-27"></a><span class="x">                </span><span class="cp">${</span><span class="n">base</span><span class="o">.</span><span class="n">html_translations</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-28"></a><span class="x">            &lt;/small&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-29"></a>            <span class="cp">%</span><span class="k">endif</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-30"></a><span class="x">            </span><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-31"></a><span class="x">            &lt;ul class="unstyled"&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-32"></a><span class="x">            &lt;li&gt;</span><span class="cp">${</span><span class="n">license</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-33"></a><span class="x">            </span><span class="cp">${</span><span class="n">base</span><span class="o">.</span><span class="n">html_social</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-34"></a><span class="x">            </span><span class="cp">${</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">html_navigation_links</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-35"></a><span class="x">            &lt;li&gt;</span><span class="cp">${</span><span class="n">search_form</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-36"></a><span class="x">            &lt;/ul&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-37"></a><span class="x">        &lt;/div&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-38"></a><span class="x">        &lt;div id="footer"&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-39"></a><span class="x">            </span><span class="cp">${</span><span class="n">content_footer</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-40"></a><span class="x">        &lt;/div&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-41"></a><span class="x">    &lt;/div&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-42"></a><span class="x">    </span><span class="cp">${</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">late_load_js</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-43"></a><span class="x">    &lt;script&gt;jQuery("a.image-reference").colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});&lt;/script&gt;</span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-44"></a><span class="x">    </span><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"extra_js"</span><span class="cp">&gt;&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-45"></a><span class="x">    </span><span class="cp">${</span><span class="n">body_end</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_ba31cc7c5f414f62b7a51986e468156c-46"></a><span class="x">&lt;/body&gt;</span>
+</pre>
+<div class="figure">
+<img alt="http://ralsina.me/galleries/monospace-tut/monospace-2.png" src="http://ralsina.me/galleries/monospace-tut/monospace-2.png"><p class="caption">Yikes!</p>
+</div>
+<p>This will get better quickly once we add some CSS</p>
+</div>
+<div class="section" id="base-css">
+<h2>Base CSS</h2>
+<p>The orphan theme includes just a little styling, specifically <tt class="docutils literal">rest.css</tt> so
+the reStructuredText output looks reasonable, and <tt class="docutils literal">code.css</tt> for code snippets.</p>
+<p>It also includes an empty <tt class="docutils literal">assets/css/theme.css</tt> where you can add your own CSS.
+For example, this is taken from the original monospace theme, except for the last
+few selectors:</p>
+<pre class="code css"><a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-1"></a><span class="nt">body</span> <span class="p">{</span> <span class="k">margin</span><span class="o">:</span><span class="m">0px</span><span class="p">;</span> <span class="k">padding</span><span class="o">:</span><span class="m">20px</span> <span class="m">0px</span><span class="p">;</span> <span class="k">text-align</span><span class="o">:</span><span class="k">center</span><span class="p">;</span> <span class="k">font-family</span><span class="o">:</span><span class="n">Monospace</span><span class="p">;</span> <span class="k">color</span><span class="o">:</span><span class="m">#585858</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-2"></a><span class="nc">.post</span> <span class="p">{</span> <span class="k">margin</span><span class="o">:</span><span class="m">0px</span> <span class="m">0px</span> <span class="m">30px</span> <span class="m">0px</span><span class="p">;</span> <span class="k">padding</span><span class="o">:</span><span class="m">0px</span> <span class="m">0px</span> <span class="m">30px</span> <span class="m">0px</span><span class="p">;</span> <span class="k">border-bottom</span><span class="o">:</span><span class="m">1px</span> <span class="k">dotted</span> <span class="m">#C8C8C8</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-3"></a><span class="nc">.meta</span> <span class="p">{</span> <span class="k">margin</span><span class="o">:</span><span class="m">10px</span><span class="p">;</span> <span class="k">padding</span><span class="o">:</span><span class="m">15px</span><span class="p">;</span> <span class="k">background</span><span class="o">:</span><span class="m">#EAEAEA</span><span class="p">;</span> <span class="k">clear</span><span class="o">:</span><span class="k">both</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-4"></a><span class="nf">#footer</span> <span class="p">{</span> <span class="k">text-align</span><span class="o">:</span><span class="k">center</span><span class="p">;</span> <span class="k">clear</span><span class="o">:</span><span class="k">both</span><span class="p">;</span> <span class="k">margin</span><span class="o">:</span><span class="m">30px</span> <span class="m">0px</span> <span class="m">0px</span> <span class="m">0px</span><span class="p">;</span> <span class="k">padding</span><span class="o">:</span><span class="m">30px</span> <span class="m">0px</span> <span class="m">0px</span> <span class="m">0px</span><span class="p">;</span> <span class="k">border-top</span><span class="o">:</span><span class="m">1px</span> <span class="k">dotted</span> <span class="m">#C8C8C8</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-5"></a><span class="nf">#wrap</span> <span class="p">{</span> <span class="k">margin</span><span class="o">:</span><span class="m">0px</span> <span class="k">auto</span><span class="p">;</span> <span class="k">text-align</span><span class="o">:</span><span class="k">left</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">13px</span><span class="p">;</span> <span class="k">line-height</span><span class="o">:</span> <span class="m">1</span><span class="o">.</span><span class="m">4</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-6"></a><span class="nf">#container</span> <span class="p">{</span> <span class="k">float</span><span class="o">:</span><span class="k">right</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-7"></a><span class="nf">#sidebar</span> <span class="p">{</span> <span class="k">overflow</span><span class="o">:</span><span class="k">hidden</span><span class="p">;</span> <span class="k">clear</span><span class="o">:</span><span class="k">left</span><span class="p">;</span> <span class="k">text-align</span><span class="o">:</span><span class="k">right</span><span class="p">;</span> <span class="k">width</span><span class="o">:</span><span class="m">250px</span><span class="p">;</span> <span class="k">height</span><span class="o">:</span><span class="k">auto</span><span class="p">;</span> <span class="k">padding</span><span class="o">:</span><span class="m">0px</span> <span class="m">15px</span> <span class="m">0px</span> <span class="m">0px</span><span class="p">;</span> <span class="k">border-right</span><span class="o">:</span><span class="m">1px</span> <span class="k">dotted</span> <span class="m">#C8C8C8</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-8"></a><span class="nf">#sidebar</span> <span class="nt">li</span> <span class="p">{</span> <span class="k">list-style-type</span><span class="o">:</span><span class="k">none</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-9"></a><span class="nf">#sidebar</span> <span class="o">&gt;</span> <span class="nt">li</span> <span class="p">{</span> <span class="k">margin</span><span class="o">:</span><span class="m">20px</span> <span class="m">0px</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-10"></a><span class="nf">#sidebar</span> <span class="nt">h1</span> <span class="p">{</span> <span class="k">border-bottom</span><span class="o">:</span><span class="m">1px</span> <span class="k">dotted</span> <span class="m">#C8C8C8</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-11"></a><span class="nf">#sidebar</span> <span class="nc">.description</span> <span class="p">{</span> <span class="k">display</span><span class="o">:</span><span class="k">block</span><span class="p">;</span> <span class="k">width</span><span class="o">:</span><span class="m">100%</span><span class="p">;</span> <span class="k">height</span><span class="o">:</span><span class="k">auto</span><span class="p">;</span> <span class="k">margin</span><span class="o">:</span><span class="m">0px</span> <span class="m">0px</span> <span class="m">10px</span> <span class="m">0px</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-12"></a><span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span><span class="o">,</span> <span class="nt">h7</span> <span class="p">{</span> <span class="k">margin</span><span class="o">:</span><span class="m">0px</span><span class="p">;</span> <span class="k">text-transform</span><span class="o">:</span><span class="k">uppercase</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-13"></a><span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span> <span class="p">{</span> <span class="k">font-size</span><span class="o">:</span><span class="m">14px</span><span class="p">;</span> <span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-14"></a><span class="nf">#blog-title</span> <span class="p">{</span> <span class="k">margin-top</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span> <span class="k">line-height</span><span class="o">:</span><span class="m">48px</span><span class="p">;}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-15"></a><span class="nc">.literal-block</span> <span class="p">{</span><span class="k">padding</span><span class="o">:</span> <span class="m">.5em</span><span class="p">;}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-16"></a><span class="nt">div</span><span class="nc">.sidebar</span><span class="o">,</span> <span class="nt">div</span><span class="nc">.admonition</span><span class="o">,</span> <span class="nt">div</span><span class="nc">.attention</span><span class="o">,</span> <span class="nt">div</span><span class="nc">.caution</span><span class="o">,</span> <span class="nt">div</span><span class="nc">.danger</span><span class="o">,</span> <span class="nt">div</span><span class="nc">.error</span><span class="o">,</span> <span class="nt">div</span><span class="nc">.hint</span><span class="o">,</span> <span class="nt">div</span><span class="nc">.important</span><span class="o">,</span> <span class="nt">div</span><span class="nc">.note</span><span class="o">,</span> <span class="nt">div</span><span class="nc">.tip</span><span class="o">,</span> <span class="nt">div</span><span class="nc">.warning</span> <span class="p">{</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-17"></a>    <span class="c">/* Issue 277 */</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-18"></a>    <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#aaa</span><span class="p">;</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-19"></a>    <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">5px</span><span class="p">;</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-20"></a>    <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-21"></a><span class="p">}</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-22"></a><span class="nt">ul</span><span class="nc">.breadcrumb</span> <span class="o">&gt;</span> <span class="nt">li</span><span class="nd">:before</span> <span class="p">{</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-23"></a>    <span class="k">content</span><span class="o">:</span> <span class="s2">" / "</span><span class="p">;</span>
+<a name="rest_code_ba4ca9720dcf4c11b8109e2095100657-24"></a><span class="p">}</span>
+</pre>
+<p>This will (after we rebuild it) make the site looks different of course, and getting closer to our goal:</p>
+<div class="figure">
+<img alt="http://ralsina.me/galleries/monospace-tut/monospace-3.png" src="http://ralsina.me/galleries/monospace-tut/monospace-3.png" style="height: 400px;"><p class="caption">Monospaced allright.</p>
+</div>
+<p>If you compare it to <a class="reference external" href="http://wp-themes.com/monospace/">the original</a>, however, you will see that the layout of
+the posts themselves is different, and that was not described in <tt class="docutils literal">base.tmpl</tt> at all. But if you look, you'll see that
+there is a placeholder called content: <tt class="docutils literal">&lt;%block <span class="pre">name="content"&gt;&lt;/%block&gt;</span></tt></p>
+<p>That's because <tt class="docutils literal">base.tmpl</tt> defines the <em>base</em> layout. The layout of more specific pages, like "the page that shows
+a list of posts" is defined in the other templates. Specifically, this is defined in <tt class="docutils literal">index.tmpl</tt>.
+It turns out <tt class="docutils literal">bootstrap</tt> doesn' have one of those! That's because it inherits that template from <tt class="docutils literal">base</tt>:</p>
+<pre class="code mako"><a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-1"></a><span class="cp">## -*- coding: utf-8 -*-</span><span class="x"></span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-2"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"helper"</span> <span class="na">file=</span><span class="s">"index_helper.tmpl"</span><span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-3"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"comments"</span> <span class="na">file=</span><span class="s">"comments_helper.tmpl"</span><span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-4"></a><span class="cp">&lt;%</span><span class="nb">inherit</span> <span class="na">file=</span><span class="s">"base.tmpl"</span><span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-5"></a><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"content"</span><span class="cp">&gt;</span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-6"></a>    <span class="cp">%</span> <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span><span class="x"></span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-7"></a><span class="x">        &lt;div class="postbox post-</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s">'type'</span><span class="p">)</span><span class="cp">}</span><span class="x">"&gt;</span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-8"></a><span class="x">        &lt;h1&gt;&lt;a href="</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">()</span><span class="cp">}</span><span class="x">"&gt;</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="cp">}</span><span class="x">&lt;/a&gt;</span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-9"></a><span class="x">        &lt;small&gt;&amp;nbsp;&amp;nbsp;</span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-10"></a><span class="x">            </span><span class="cp">${</span><span class="n">messages</span><span class="p">(</span><span class="s">"Posted"</span><span class="p">)</span><span class="cp">}</span><span class="x">: &lt;time class="published" datetime="</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="cp">}</span><span class="x">"&gt;</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">formatted_date</span><span class="p">(</span><span class="n">date_format</span><span class="p">)</span><span class="cp">}</span><span class="x">&lt;/time&gt;</span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-11"></a><span class="x">        &lt;/small&gt;&lt;/h1&gt;</span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-12"></a><span class="x">        &lt;hr&gt;</span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-13"></a><span class="x">        </span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">teaser_only</span><span class="o">=</span><span class="n">index_teasers</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-14"></a>        <span class="cp">%</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s">'nocomments'</span><span class="p">):</span><span class="x"></span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-15"></a><span class="x">            </span><span class="cp">${</span><span class="n">comments</span><span class="o">.</span><span class="n">comment_link</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">(),</span> <span class="n">post</span><span class="o">.</span><span class="n">base_path</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-16"></a>        <span class="cp">%</span><span class="k"> endif</span><span class="x"></span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-17"></a><span class="x">        &lt;/div&gt;</span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-18"></a>    <span class="cp">%</span><span class="k"> endfor</span><span class="x"></span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-19"></a><span class="x">    </span><span class="cp">${</span><span class="n">helper</span><span class="o">.</span><span class="n">html_pager</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-20"></a><span class="x">    </span><span class="cp">${</span><span class="n">comments</span><span class="o">.</span><span class="n">comment_link_script</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-21"></a><span class="x">    </span><span class="cp">${</span><span class="n">helper</span><span class="o">.</span><span class="n">mathjax_script</span><span class="p">(</span><span class="n">posts</span><span class="p">)</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_51a8eb8e0d60472985f68b60a793ffd2-22"></a><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span><span class="x"></span>
+</pre>
+<p>So, let's tweak that to be closer to the original. We put the post's metadata in a
+box, add links for the posts tags, move the date there, etc.</p>
+<pre class="code mako"><a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-1"></a><span class="cp">## -*- coding: utf-8 -*-</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-2"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"helper"</span> <span class="na">file=</span><span class="s">"index_helper.tmpl"</span><span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-3"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"disqus"</span> <span class="na">file=</span><span class="s">"disqus_helper.tmpl"</span><span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-4"></a><span class="cp">&lt;%</span><span class="nb">inherit</span> <span class="na">file=</span><span class="s">"base.tmpl"</span><span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-5"></a><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"content"</span><span class="cp">&gt;</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-6"></a>    <span class="cp">%</span> <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-7"></a><span class="x">        &lt;div class="postbox post-</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s">'type'</span><span class="p">)</span><span class="cp">}</span><span class="x">"&gt;</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-8"></a><span class="x">        &lt;h1&gt;&lt;a href="</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">()</span><span class="cp">}</span><span class="x">"&gt;</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="cp">}</span><span class="x">&lt;/a&gt;&lt;/h1&gt;</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-9"></a><span class="x">            &lt;div class="meta" style="background-color: rgb(234, 234, 234); "&gt;</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-10"></a><span class="x">                &lt;span class="authordate"&gt;</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-11"></a><span class="x">                    </span><span class="cp">${</span><span class="n">messages</span><span class="p">(</span><span class="s">"Posted"</span><span class="p">)</span><span class="cp">}</span><span class="x">: </span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">formatted_date</span><span class="p">(</span><span class="n">date_format</span><span class="p">)</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-12"></a><span class="x">                &lt;/span&gt;</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-13"></a><span class="x">                &lt;br&gt;</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-14"></a><span class="x">                &lt;span class="tags"&gt;Tags:&amp;nbsp;</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-15"></a>                    <span class="cp">%</span><span class="k">if</span> <span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-16"></a>                        <span class="cp">%</span><span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-17"></a><span class="x">                            &lt;a class="tag" href="</span><span class="cp">${</span><span class="n">_link</span><span class="p">(</span><span class="s">'tag'</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span><span class="cp">}</span><span class="x">"&gt;&lt;span&gt;</span><span class="cp">${</span><span class="n">tag</span><span class="cp">}</span><span class="x">&lt;/span&gt;&lt;/a&gt;</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-18"></a>                        <span class="cp">%</span><span class="k">endfor</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-19"></a>                    <span class="cp">%</span><span class="k">endif</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-20"></a><span class="x">                &lt;/span&gt;</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-21"></a><span class="x">            &lt;/div&gt;</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-22"></a><span class="x">        </span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">teaser_only</span><span class="o">=</span><span class="n">index_teasers</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-23"></a>        <span class="cp">%</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s">'nocomments'</span><span class="p">):</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-24"></a><span class="x">            </span><span class="cp">${</span><span class="n">disqus</span><span class="o">.</span><span class="n">html_disqus_link</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">()</span><span class="o">+</span><span class="s">"#disqus_thread"</span><span class="p">,</span> <span class="n">post</span><span class="o">.</span><span class="n">base_path</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-25"></a>        <span class="cp">%</span><span class="k"> endif</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-26"></a><span class="x">        &lt;/div&gt;</span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-27"></a>    <span class="cp">%</span><span class="k"> endfor</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-28"></a><span class="x">    </span><span class="cp">${</span><span class="n">helper</span><span class="o">.</span><span class="n">html_pager</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-29"></a><span class="x">    </span><span class="cp">${</span><span class="n">disqus</span><span class="o">.</span><span class="n">html_disqus_script</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_f9cf0dca3eea4168b0fc63c81544492e-30"></a><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span><span class="x"></span>
+</pre>
+<div class="figure">
+<img alt="http://ralsina.me/galleries/monospace-tut/monospace-4.png" src="http://ralsina.me/galleries/monospace-tut/monospace-4.png" style="height: 400px;"><p class="caption">Close enough!</p>
+</div>
+<p>Then if we click on the post title, we will see some broken details in the metadata that can be fixed in <tt class="docutils literal">post.tmpl</tt>, and so on.</p>
+<pre class="code mako"><a name="rest_code_7a50dd1880ac452299f718cf5702f215-1"></a><span class="cp">## -*- coding: utf-8 -*-</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-2"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"helper"</span> <span class="na">file=</span><span class="s">"post_helper.tmpl"</span><span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-3"></a><span class="cp">&lt;%</span><span class="nb">namespace</span> <span class="na">name=</span><span class="s">"disqus"</span> <span class="na">file=</span><span class="s">"disqus_helper.tmpl"</span><span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-4"></a><span class="cp">&lt;%</span><span class="nb">inherit</span> <span class="na">file=</span><span class="s">"base.tmpl"</span><span class="cp">/&gt;</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-5"></a><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"extra_head"</span><span class="cp">&gt;</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-6"></a><span class="cp">${</span><span class="n">helper</span><span class="o">.</span><span class="n">twitter_card_information</span><span class="p">(</span><span class="n">post</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-7"></a><span class="cp">%</span> <span class="k">if</span> <span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s">'keywords'</span><span class="p">):</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-8"></a><span class="x">    &lt;meta name="keywords" content="</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s">'keywords'</span><span class="p">)</span><span class="o">|</span><span class="n">h</span><span class="cp">}</span><span class="x">"/&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-9"></a><span class="cp">%</span><span class="k"> endif</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-10"></a><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-11"></a><span class="cp">&lt;%</span><span class="nb">block</span> <span class="na">name=</span><span class="s">"content"</span><span class="cp">&gt;</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-12"></a><span class="x">    &lt;div class="post"&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-13"></a><span class="x">    </span><span class="cp">${</span><span class="n">helper</span><span class="o">.</span><span class="n">html_title</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-14"></a><span class="x">        &lt;div class="meta" style="background-color: rgb(234, 234, 234); "&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-15"></a><span class="x">        &lt;span class="authordate"&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-16"></a><span class="x">            </span><span class="cp">${</span><span class="n">messages</span><span class="p">(</span><span class="s">"Posted"</span><span class="p">)</span><span class="cp">}</span><span class="x">: </span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">formatted_date</span><span class="p">(</span><span class="n">date_format</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-17"></a>            <span class="cp">%</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s">'password'</span><span class="p">):</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-18"></a><span class="x">            [&lt;a href="</span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">source_link</span><span class="p">()</span><span class="cp">}</span><span class="x">" id="sourcelink"&gt;</span><span class="cp">${</span><span class="n">messages</span><span class="p">(</span><span class="s">"Source"</span><span class="p">)</span><span class="cp">}</span><span class="x">&lt;/a&gt;]</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-19"></a>            <span class="cp">%</span><span class="k"> endif</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-20"></a><span class="x">        &lt;/span&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-21"></a><span class="x">        &lt;br&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-22"></a>            <span class="cp">%</span><span class="k">if</span> <span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-23"></a><span class="x">                &lt;span class="tags"&gt;</span><span class="cp">${</span><span class="n">messages</span><span class="p">(</span><span class="s">"Tags"</span><span class="p">)</span><span class="cp">}</span><span class="x">:&amp;nbsp;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-24"></a>                <span class="cp">%</span><span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">post</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-25"></a><span class="x">                    &lt;a class="tag" href="</span><span class="cp">${</span><span class="n">_link</span><span class="p">(</span><span class="s">'tag'</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span><span class="cp">}</span><span class="x">"&gt;&lt;span&gt;</span><span class="cp">${</span><span class="n">tag</span><span class="cp">}</span><span class="x">&lt;/span&gt;&lt;/a&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-26"></a>                <span class="cp">%</span><span class="k">endfor</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-27"></a><span class="x">                &lt;/span&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-28"></a><span class="x">                &lt;br&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-29"></a>            <span class="cp">%</span><span class="k">endif</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-30"></a><span class="x">        &lt;span class="authordate"&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-31"></a><span class="x">            </span><span class="cp">${</span><span class="n">helper</span><span class="o">.</span><span class="n">html_translations</span><span class="p">(</span><span class="n">post</span><span class="p">)</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-32"></a><span class="x">        &lt;/span&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-33"></a><span class="x">        &lt;/div&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-34"></a><span class="x">    </span><span class="cp">${</span><span class="n">post</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="cp">}</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-35"></a><span class="x">    </span><span class="cp">${</span><span class="n">helper</span><span class="o">.</span><span class="n">html_pager</span><span class="p">(</span><span class="n">post</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-36"></a>    <span class="cp">%</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">post</span><span class="o">.</span><span class="n">meta</span><span class="p">(</span><span class="s">'nocomments'</span><span class="p">):</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-37"></a><span class="x">        </span><span class="cp">${</span><span class="n">disqus</span><span class="o">.</span><span class="n">html_disqus</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">permalink</span><span class="p">(</span><span class="n">absolute</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span> <span class="n">post</span><span class="o">.</span><span class="n">title</span><span class="p">(),</span> <span class="n">post</span><span class="o">.</span><span class="n">base_path</span><span class="p">)</span><span class="cp">}</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-38"></a>    <span class="cp">%</span><span class="k"> endif</span><span class="x"></span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-39"></a><span class="x">    &lt;/div&gt;</span>
+<a name="rest_code_7a50dd1880ac452299f718cf5702f215-40"></a><span class="cp">&lt;/%</span><span class="nb">block</span><span class="cp">&gt;</span><span class="x"></span>
+</pre>
+<div class="figure">
+<img alt="http://ralsina.me/galleries/monospace-tut/monospace-5.png" src="http://ralsina.me/galleries/monospace-tut/monospace-5.png" style="height: 400px;"><p class="caption">Details, details.</p>
+</div>
+<p>The demo site exercises most of the features in Nikola, so if you make it look good, your site probably will look good too.
+This monospace theme is included with nikola, if you want to use it or play with it.</p>
+</div>
+</div>
+    </div>
+    
+</article>
+</div>
+            </div>
+        </div>
+        <button class="btn btn-fab btn-raised btn-material-green btn-footer" data-toggle="modal" data-target="#footer-dialog">
+            <i class="mdi-communication-message"></i>
+        </button>
+        <div id="footer-dialog" class="modal fade" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Material Theme credits</h4>
+              </div>
+              <div class="modal-body">
+                    Contents © 2015         <a href="mailto:matu.varela@gmail.com">Matias Varela</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+                    
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Ok</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer row shadow-z-1" style="display:none"></footer>
+</div>
+
+            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/ripples.min.js"></script><script src="../assets/js/material.min.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script src="../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>
+
+            $(document).ready(function() {
+                // This command is used to initialize some elements and make them work properly
+                $.material.init();
+            });
+
+             $(window).on("resize", function() {
+                $("html, body").height($(window).height());
+                $(".main, .menu").height($(window).height() - $(".header-panel").outerHeight() - 76 ); // footer margin: $("footer.footer").outerHeight()
+                $(".posts-material").height($(window).height());
+              }).trigger("resize");
+
+             $(".menu li").click(function() {
+                // Menu
+                if (!$(this).data("target")) return;
+                if ($(this).is(".active")) return;
+                $(".menu li").not($(this)).removeClass("active");
+                window.page = $(this).data("target");
+                setTimeout(function() {
+                    window.location.href= window.page;
+                }, 500);
+            });
+        </script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>
