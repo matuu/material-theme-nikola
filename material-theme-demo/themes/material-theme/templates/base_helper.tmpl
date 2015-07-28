@@ -175,7 +175,7 @@ lang="{{ lang }}">
             {% if rel_link(permalink, url) == "#" %}
                 <li class="withripple active" data-target="{{ permalink }}">{{ text }}<div class="ripple-wrapper"></div></li>
             {% else %}
-                <li class="withripple" data-target="{{ url }}">{{ text }}<div class="ripple-wrapper"></div></li>
+                <li class="withripple" data-target="{{ abs_link(_link("root", None, lang)) }}{{ url }}">{{ text }}<div class="ripple-wrapper"></div></li>
             {% endif %}
         {% endif %}
     {% endfor %}
