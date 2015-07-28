@@ -13,10 +13,6 @@
   <lastmod>2015-07-26</lastmod>
  </sitemap>
  <sitemap>
-  <loc>http://matuu.github.io/material-theme-nikola/categories/cat_otra-categoria.xml</loc>
-  <lastmod>2015-07-26</lastmod>
- </sitemap>
- <sitemap>
   <loc>http://matuu.github.io/material-theme-nikola/categories/demo.xml</loc>
   <lastmod>2015-07-26</lastmod>
  </sitemap>
@@ -29,20 +25,12 @@
   <lastmod>2015-07-26</lastmod>
  </sitemap>
  <sitemap>
-  <loc>http://matuu.github.io/material-theme-nikola/categories/tags-1.xml</loc>
-  <lastmod>2015-07-26</lastmod>
- </sitemap>
- <sitemap>
-  <loc>http://matuu.github.io/material-theme-nikola/categories/tags-2.xml</loc>
-  <lastmod>2015-07-26</lastmod>
- </sitemap>
- <sitemap>
   <loc>http://matuu.github.io/material-theme-nikola/galleries/demo/rss.xml</loc>
-  <lastmod>2015-07-26</lastmod>
+  <lastmod>2015-07-27</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://matuu.github.io/material-theme-nikola/galleries/rss.xml</loc>
-  <lastmod>2015-07-26</lastmod>
+  <lastmod>2015-07-27</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://matuu.github.io/material-theme-nikola/rss.xml</loc>
@@ -50,6 +38,6 @@
  </sitemap>
  <sitemap>
   <loc>http://matuu.github.io/material-theme-nikola/sitemap.xml</loc>
-  <lastmod>2015-07-26</lastmod>
+  <lastmod>2015-07-27</lastmod>
  </sitemap>
 </sitemapindex>
