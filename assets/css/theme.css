@@ -1,3 +1,8 @@
+h1, h2, h3, h4 {
+    font-family: "Raleway";
+    color: #009688;
+}
+
 .header-panel {
     z-index: 3;
     height: 156px;
@@ -23,6 +28,13 @@
 
 #blog-title {
     color: #fff;
+}
+
+.source-button > a {
+    top: 123px;
+    position: fixed;
+    right: 67px;
+    z-index: 1000;
 }
 
 .footer {
