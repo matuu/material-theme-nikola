@@ -5,6 +5,8 @@ Based on [bootstrap-material-design](https://github.com/FezVrasta/bootstrap-mate
 
 ![demo site](https://github.com/matuu/material-theme-nikola/blob/master/screenshots/screenshot-default.png)
 
+See [demo](http://matuu.github.io/material-theme-nikola/).
+
 ## How use?
 
 Simple. Copy dist/material-theme into the 'themes' folder into your project, and then you write 'material-theme' in theme option into your conf.py file.
