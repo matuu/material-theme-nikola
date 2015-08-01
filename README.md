@@ -1,7 +1,9 @@
 # material-theme-nikola
 A theme for nikola based on Bootstrap 3 which lets you use the new [Google Material Design](http://www.google.com/design/spec/material-design/).
 
-Based on [bootstrap-material-design](https://github.com/FezVrasta/bootstrap-material-design).
+Based on [bootstrap-material-design](https://github.com/FezVrasta/bootstrap-material-design). Thank you!
+
+![demo site](https://github.com/matuu/material-theme-nikola/blob/master/screenshots/screenshot-default.png)
 
 ## How use?
 
@@ -27,4 +29,8 @@ Options available:
 * warning
 * danger
 
+![headers examples](https://github.com/matuu/material-theme-nikola/blob/master/screenshots/navbars.png)
 
+## TODO
+
+* More customizations options.
