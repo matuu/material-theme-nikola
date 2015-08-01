@@ -18,12 +18,14 @@
         <header>
             <h1 class="p-name entry-title header"><a href="{{ post.permalink() }}" class="u-url">{{ post.title()|e }}</a></h1>
             <div class="metadata">
-                <p class="byline author vcard"><span class="byline-name fn">{{ post.author() }}</span></p>
-                <p class="dateline"><a href="{{ post.permalink() }}" rel="bookmark"><time class="published dt-published" datetime="{{ post.date.isoformat() }}" title="{{ post.formatted_date(date_format) }}">{{ post.formatted_date(date_format) }}</time></a></p>
+                <span class="byline author vcard"><i class="mdi-action-face-unlock"></i>{{ post.author() }}</span>
+                <span class="dateline"><a href="{{ post.permalink() }}" rel="bookmark">
+                    <i class="mdi-device-access-time"></i><time class="published dt-published" datetime="{{ post.date.isoformat() }}" title="{{ post.formatted_date(date_format) }}">{{ post.formatted_date(date_format) }}</time></a></span>
                 {% if not post.meta('nocomments') and site_has_comments %}
-                    <p class="commentline">{{ comments.comment_link(post.permalink(), post._base_path) }}
+                    <span class="commentline">{{ comments.comment_link(post.permalink(), post._base_path) }}</span>
                 {% endif %}
             </div>
+            <hr />
         </header>
         {% if index_teasers %}
         <div class="p-summary entry-summary">

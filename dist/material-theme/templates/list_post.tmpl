@@ -4,14 +4,27 @@
 {% block content %}
 <article class="listpage">
     <header>
-        <h1 class="text-primary">{{ title }}</h1>
+        <h1>{{ title }}</h1>
     </header>
     {% if posts %}
-    <ul class="postlist">
+    <div class="postlist list-group">
     {% for post in posts %}
-        <li><a href="{{ post.permalink() }}" class="listtitle">{{ post.title()|e }}</a> <time class="listdate" datetime="{{ post.date.isoformat() }}" title="{{ post.formatted_date(date_format) }}">{{ post.formatted_date(date_format) }}</time></li>
+        <div class="list-group-item">
+                <div class="row-action-primary">
+                    <i class="mdi-content-create"></i>
+                </div>
+                <div class="row-content">
+                    <div class="least-content">
+                            <time class="listdate" datetime="{{ post.date.isoformat() }}" title="{{ post.formatted_date(date_format) }}">{{ post.formatted_date(date_format) }}</time></div>
+                    <h4 class="list-group-item-heading">
+                            <a href="{{ post.permalink() }}" class="listtitle">{{ post.title()|e }}</a>
+                    </h4>
+                    <p class="list-group-item-text">{{ post.description()|e }}</p>
+                </div>
+            </div>
+            <div class="list-group-separator"></div>
     {% endfor %}
-    </ul>
+    </div>
     {% else %}
     <p>{{ messages("No posts found.") }}</p>
     {% endif %}

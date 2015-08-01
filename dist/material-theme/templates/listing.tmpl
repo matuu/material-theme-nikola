@@ -21,8 +21,8 @@
 
 {% block sourcelink %}
 {% if source_link %}
-    <li>
-    <a href="{{ source_link }}" id="sourcelink">{{ messages("Source") }}</a>
-    </li>
+    <a class="btn btn-fab btn-raised btn-material-indigo" target="_blank" href="{{ source_link }}" title="{{ messages("Source") }}">
+        <i class="mdi-file-cloud-download"></i>
+    </a>
 {% endif %}
 {% endblock %}

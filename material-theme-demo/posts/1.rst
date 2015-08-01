@@ -4,7 +4,7 @@
 .. tags: nikola, python, demo, blog
 .. author: Roberto Alsina
 .. link: http://getnikola.com
-.. description:
+.. description: Congratulations, Nikola is installed.
 .. category: nikola
 
 .. figure:: http://farm1.staticflickr.com/138/352972944_4f9d568680.jpg

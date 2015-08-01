@@ -13,7 +13,7 @@
 
 <!-- Menubar -->
 
-<nav class="navbar header-panel shadow-z-3" role="navigation">
+<nav class="navbar {% if header_color %}navbar-{{ header_color }}{% endif %} header-panel shadow-z-3" role="navigation">
     <div class="container-fluid">
         <div class="row">
           <div class="col-xs-3">
@@ -43,23 +43,19 @@
                     {{ template_hooks['menu']() }}
                 </ul>
 
-
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav">
                     {% block belowtitle %}
                     {% if translations|length > 1 %}
                         <li>{{ base.html_translations() }}</li>
                     {% endif %}
                     {% endblock %}
-                    {% if show_sourcelink %}
-                        {% block sourcelink %}{% endblock %}
-                    {% endif %}
                     {{ template_hooks['menu_alt']() }}
                 </ul>
             </nav>
 
             {{ template_hooks['page_header']() }}
             <div class="posts-material col-xs-9">
-                <div class="col-xs-11 content-material">
+                <div class="col-xs-12 col-md-11 content-material">
                 {% block content %}{% endblock %}
                 </div>
             </div>
@@ -84,9 +80,11 @@
             </div>
           </div>
         </div>
-        <footer class="footer row shadow-z-1" style="display:none">
-
-        </footer>
+        <div class="source-button">
+            {% if show_sourcelink %}
+                {% block sourcelink %}{% endblock %}
+            {% endif %}
+        </div>
 
 </div>
 

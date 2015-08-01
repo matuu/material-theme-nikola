@@ -59,3 +59,4 @@ material-theme-demo/output/*
 material-theme-demo/.doit.db
 material-theme-demo/.ropeproject/*
 material-theme-demo/cache/*
+.ropeproject

@@ -5,11 +5,12 @@
 <article class="listpage">
     <header>
         <h1>{{ title }}</h1>
+        <hr />
     </header>
     {% if items %}
     <ul class="postlist">
     {% for text, link in items %}
-        <li><a href="{{ link }}">{{ text }}</a>
+        <li><a href="{{ link }}"><i class="mdi-action-done"></i>{{ text }}</a>
     {% endfor %}
     </ul>
     {% else %}

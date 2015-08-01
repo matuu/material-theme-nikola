@@ -71,6 +71,14 @@ lang="{{ lang }}">
     {{ extra_head_data }}
 {% endmacro %}
 
+{% macro theme_color() %}
+    {% if theme_color %}
+        {{ theme_color }}
+    {% else %}
+        'default'
+    {% endif %}
+{% endmacro %}
+
 {% macro late_load_js() %}
     {% if use_bundles %}
         {% if use_cdn %}

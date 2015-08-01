@@ -867,14 +867,14 @@ COMMENT_SYSTEM_ID = ""
 # """ % SITE_URL
 #
 # If you prefer a Google search form, here's an example that should just work:
-SEARCH_FORM = """
-<!-- Custom search with Google-->
-<form id="search" action="//www.google.com/search" method="get" class="navbar-form">
-<input type="hidden" name="q" value="site:%s" />
-<input type="text" name="q" class="form-control col-lg-8"  maxlength="255" results="0" placeholder="Search"/>
-</form>
-<!-- End of custom search -->
-""" % SITE_URL
+#SEARCH_FORM = """
+#<!-- Custom search with Google-->
+#<form id="search" action="//www.google.com/search" method="get" class="navbar-form">
+#<input type="hidden" name="q" value="site:%s" />
+#<input type="text" name="q" class="form-control col-lg-8"  maxlength="255" results="0" placeholder="Search"/>
+#</form>
+#<!-- End of custom search -->
+#""" % SITE_URL
 
 # Use content distribution networks for jQuery, twitter-bootstrap css and js,
 # and html5shiv (for older versions of Internet Explorer)
@@ -1004,7 +1004,9 @@ LOGGING_HANDLERS = {
 
 # Put in global_context things you want available on all your templates.
 # It can be anything, data, functions, modules, etc.
-GLOBAL_CONTEXT = {}
+GLOBAL_CONTEXT = {
+    'header_color': 'default'
+}
 
 # Add functions here and they will be called with template
 # GLOBAL_CONTEXT as parameter when the template is about to be
