@@ -48,13 +48,6 @@ Inst">
 <nav class="navbar navbar-default header-panel shadow-z-3" role="navigation"><div class="container-fluid">
         <div class="row">
           <div class="col-xs-3">
-                    
-<!-- Custom search with Google-->
-<form id="search" action="//www.google.com/search" method="get" class="navbar-form">
-<input type="hidden" name="q" value="site:http://matuu.github.io/material-theme-nikola/"><input type="text" name="q" class="form-control col-lg-8" maxlength="255" results="0" placeholder="Search">
-</form>
-<!-- End of custom search -->
-
             <h1>
                 <a href="http://matuu.github.io/material-theme-nikola/">
                         <span id="blog-title">Material Theme Demo</span>
@@ -77,11 +70,9 @@ Inst">
                     
                 </ul>
 <ul class="nav navbar-nav"></ul></nav><div class="posts-material col-xs-9">
-                <div class="col-xs-11 content-material">
+                <div class="col-xs-12 col-md-11 content-material">
 <article class="storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">The Nikola Handbook</a></h1>
-
-        
-    </header><div class="e-content entry-content" itemprop="articleBody text">
+<hr></header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
 <table class="docinfo" frame="void" rules="none">
 <col class="docinfo-name">
@@ -1106,28 +1097,28 @@ really put anything there. See <cite>social_buttons.html</cite> for more details
 </dl>
 <p>In order to use fancy dates, your theme must support them.  The built-in Bootstrap family supports it, but other themes might not by default.</p>
 <p>For Mako:</p>
-<pre class="code html"><a name="rest_code_ac18ee68d1c54de58fc8dffdd7b6e83b-1"></a><span class="c">&lt;!-- required scripts -- best handled with bundles --&gt;</span>
-<a name="rest_code_ac18ee68d1c54de58fc8dffdd7b6e83b-2"></a><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/moment-with-locales.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<a name="rest_code_ac18ee68d1c54de58fc8dffdd7b6e83b-3"></a><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/fancydates.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<a name="rest_code_ac18ee68d1c54de58fc8dffdd7b6e83b-4"></a>
-<a name="rest_code_ac18ee68d1c54de58fc8dffdd7b6e83b-5"></a><span class="c">&lt;!-- fancy dates code --&gt;</span>
-<a name="rest_code_ac18ee68d1c54de58fc8dffdd7b6e83b-6"></a><span class="nt">&lt;script&gt;</span>
-<a name="rest_code_ac18ee68d1c54de58fc8dffdd7b6e83b-7"></a><span class="nx">moment</span><span class="p">.</span><span class="nx">locale</span><span class="p">(</span><span class="s2">"${momentjs_locales[lang]}"</span><span class="p">);</span>
-<a name="rest_code_ac18ee68d1c54de58fc8dffdd7b6e83b-8"></a><span class="nx">fancydates</span><span class="p">(</span><span class="nx">$</span><span class="p">{</span><span class="nx">date_fanciness</span><span class="p">},</span> <span class="nx">$</span><span class="p">{</span><span class="nx">js_date_format</span><span class="p">});</span>
-<a name="rest_code_ac18ee68d1c54de58fc8dffdd7b6e83b-9"></a><span class="nt">&lt;/script&gt;</span>
-<a name="rest_code_ac18ee68d1c54de58fc8dffdd7b6e83b-10"></a><span class="c">&lt;!-- end fancy dates code --&gt;</span>
+<pre class="code html"><a name="rest_code_0e0c78486f994766b68615e5ea20f798-1"></a><span class="c">&lt;!-- required scripts -- best handled with bundles --&gt;</span>
+<a name="rest_code_0e0c78486f994766b68615e5ea20f798-2"></a><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/moment-with-locales.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<a name="rest_code_0e0c78486f994766b68615e5ea20f798-3"></a><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/fancydates.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<a name="rest_code_0e0c78486f994766b68615e5ea20f798-4"></a>
+<a name="rest_code_0e0c78486f994766b68615e5ea20f798-5"></a><span class="c">&lt;!-- fancy dates code --&gt;</span>
+<a name="rest_code_0e0c78486f994766b68615e5ea20f798-6"></a><span class="nt">&lt;script&gt;</span>
+<a name="rest_code_0e0c78486f994766b68615e5ea20f798-7"></a><span class="nx">moment</span><span class="p">.</span><span class="nx">locale</span><span class="p">(</span><span class="s2">"${momentjs_locales[lang]}"</span><span class="p">);</span>
+<a name="rest_code_0e0c78486f994766b68615e5ea20f798-8"></a><span class="nx">fancydates</span><span class="p">(</span><span class="nx">$</span><span class="p">{</span><span class="nx">date_fanciness</span><span class="p">},</span> <span class="nx">$</span><span class="p">{</span><span class="nx">js_date_format</span><span class="p">});</span>
+<a name="rest_code_0e0c78486f994766b68615e5ea20f798-9"></a><span class="nt">&lt;/script&gt;</span>
+<a name="rest_code_0e0c78486f994766b68615e5ea20f798-10"></a><span class="c">&lt;!-- end fancy dates code --&gt;</span>
 </pre>
 <p>For Jinja2:</p>
-<pre class="code html"><a name="rest_code_c6c4ded214b0411a91f002c8ebd8d96e-1"></a><span class="c">&lt;!-- required scripts -- best handled with bundles --&gt;</span>
-<a name="rest_code_c6c4ded214b0411a91f002c8ebd8d96e-2"></a><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/moment-with-locales.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<a name="rest_code_c6c4ded214b0411a91f002c8ebd8d96e-3"></a><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/fancydates.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<a name="rest_code_c6c4ded214b0411a91f002c8ebd8d96e-4"></a>
-<a name="rest_code_c6c4ded214b0411a91f002c8ebd8d96e-5"></a><span class="c">&lt;!-- fancy dates code --&gt;</span>
-<a name="rest_code_c6c4ded214b0411a91f002c8ebd8d96e-6"></a><span class="nt">&lt;script&gt;</span>
-<a name="rest_code_c6c4ded214b0411a91f002c8ebd8d96e-7"></a><span class="nx">moment</span><span class="p">.</span><span class="nx">locale</span><span class="p">(</span><span class="s2">"{{ momentjs_locales[lang] }}"</span><span class="p">);</span>
-<a name="rest_code_c6c4ded214b0411a91f002c8ebd8d96e-8"></a><span class="nx">fancydates</span><span class="p">({{</span> <span class="nx">date_fanciness</span> <span class="p">}},</span> <span class="p">{{</span> <span class="nx">js_date_format</span> <span class="p">}});</span>
-<a name="rest_code_c6c4ded214b0411a91f002c8ebd8d96e-9"></a><span class="nt">&lt;/script&gt;</span>
-<a name="rest_code_c6c4ded214b0411a91f002c8ebd8d96e-10"></a><span class="c">&lt;!-- end fancy dates code --&gt;</span>
+<pre class="code html"><a name="rest_code_89a563384e6d44cb8d965547fb014528-1"></a><span class="c">&lt;!-- required scripts -- best handled with bundles --&gt;</span>
+<a name="rest_code_89a563384e6d44cb8d965547fb014528-2"></a><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/moment-with-locales.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<a name="rest_code_89a563384e6d44cb8d965547fb014528-3"></a><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/fancydates.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<a name="rest_code_89a563384e6d44cb8d965547fb014528-4"></a>
+<a name="rest_code_89a563384e6d44cb8d965547fb014528-5"></a><span class="c">&lt;!-- fancy dates code --&gt;</span>
+<a name="rest_code_89a563384e6d44cb8d965547fb014528-6"></a><span class="nt">&lt;script&gt;</span>
+<a name="rest_code_89a563384e6d44cb8d965547fb014528-7"></a><span class="nx">moment</span><span class="p">.</span><span class="nx">locale</span><span class="p">(</span><span class="s2">"{{ momentjs_locales[lang] }}"</span><span class="p">);</span>
+<a name="rest_code_89a563384e6d44cb8d965547fb014528-8"></a><span class="nx">fancydates</span><span class="p">({{</span> <span class="nx">date_fanciness</span> <span class="p">}},</span> <span class="p">{{</span> <span class="nx">js_date_format</span> <span class="p">}});</span>
+<a name="rest_code_89a563384e6d44cb8d965547fb014528-9"></a><span class="nt">&lt;/script&gt;</span>
+<a name="rest_code_89a563384e6d44cb8d965547fb014528-10"></a><span class="c">&lt;!-- end fancy dates code --&gt;</span>
 </pre>
 </div>
 <div class="section" id="adding-files">
@@ -1301,14 +1292,14 @@ but it's probably more trouble than it's worth.</p>
 <p class="first admonition-title">Moot Support</p>
 <p>Moot doesn't support comment counts on index pages, and it requires adding
 this to your <tt class="docutils literal">conf.py</tt>:</p>
-<div class="last"><pre class="code python"><a name="rest_code_7f5c895269b54e118dac4a4c4331f0c2-1"></a><span class="n">BODY_END</span> <span class="o">=</span> <span class="s">"""</span>
-<a name="rest_code_7f5c895269b54e118dac4a4c4331f0c2-2"></a><span class="s">&lt;script src="//cdn.moot.it/1/moot.min.js"&gt;&lt;/script&gt;</span>
-<a name="rest_code_7f5c895269b54e118dac4a4c4331f0c2-3"></a><span class="s">"""</span>
-<a name="rest_code_7f5c895269b54e118dac4a4c4331f0c2-4"></a><span class="n">EXTRA_HEAD_DATA</span> <span class="o">=</span> <span class="s">"""</span>
-<a name="rest_code_7f5c895269b54e118dac4a4c4331f0c2-5"></a><span class="s">&lt;link rel="stylesheet" type="text/css" href="//cdn.moot.it/1/moot.css"&gt;</span>
-<a name="rest_code_7f5c895269b54e118dac4a4c4331f0c2-6"></a><span class="s">&lt;meta name="viewport" content="width=device-width"&gt;</span>
-<a name="rest_code_7f5c895269b54e118dac4a4c4331f0c2-7"></a><span class="s">&lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;</span>
-<a name="rest_code_7f5c895269b54e118dac4a4c4331f0c2-8"></a><span class="s">"""</span>
+<div class="last"><pre class="code python"><a name="rest_code_8339f5ce09a84a53b0cb6679263dedd7-1"></a><span class="n">BODY_END</span> <span class="o">=</span> <span class="s">"""</span>
+<a name="rest_code_8339f5ce09a84a53b0cb6679263dedd7-2"></a><span class="s">&lt;script src="//cdn.moot.it/1/moot.min.js"&gt;&lt;/script&gt;</span>
+<a name="rest_code_8339f5ce09a84a53b0cb6679263dedd7-3"></a><span class="s">"""</span>
+<a name="rest_code_8339f5ce09a84a53b0cb6679263dedd7-4"></a><span class="n">EXTRA_HEAD_DATA</span> <span class="o">=</span> <span class="s">"""</span>
+<a name="rest_code_8339f5ce09a84a53b0cb6679263dedd7-5"></a><span class="s">&lt;link rel="stylesheet" type="text/css" href="//cdn.moot.it/1/moot.css"&gt;</span>
+<a name="rest_code_8339f5ce09a84a53b0cb6679263dedd7-6"></a><span class="s">&lt;meta name="viewport" content="width=device-width"&gt;</span>
+<a name="rest_code_8339f5ce09a84a53b0cb6679263dedd7-7"></a><span class="s">&lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;</span>
+<a name="rest_code_8339f5ce09a84a53b0cb6679263dedd7-8"></a><span class="s">"""</span>
 </pre></div>
 </div>
 <div class="admonition-facebook-support admonition">
@@ -1403,19 +1394,19 @@ me and I will add it to the filters library so that more people use it.</p>
 and you can use arbitrary python functions as filters, too.</p>
 <p>If your program doesn't run in-place, then you can use Nikola's runinplace function.
 For example, this is how the yui_compressor filter is implemented:</p>
-<pre class="code python"><a name="rest_code_e5c020e46ef6404da790335e3f4d9a7f-1"></a><span class="k">def</span> <span class="nf">yui_compressor</span><span class="p">(</span><span class="n">infile</span><span class="p">):</span>
-<a name="rest_code_e5c020e46ef6404da790335e3f4d9a7f-2"></a>    <span class="k">return</span> <span class="n">runinplace</span><span class="p">(</span><span class="s">r'yui-compressor --nomunge %1 -o %2'</span><span class="p">,</span> <span class="n">infile</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_ffdac6493a874b358d190b3707fcb2dd-1"></a><span class="k">def</span> <span class="nf">yui_compressor</span><span class="p">(</span><span class="n">infile</span><span class="p">):</span>
+<a name="rest_code_ffdac6493a874b358d190b3707fcb2dd-2"></a>    <span class="k">return</span> <span class="n">runinplace</span><span class="p">(</span><span class="s">r'yui-compressor --nomunge %1 -o %2'</span><span class="p">,</span> <span class="n">infile</span><span class="p">)</span>
 </pre>
 <p>You can turn any function into a filter using <tt class="docutils literal">apply_to_text_file</tt> (for
 text files to be read in UTF-8) and <tt class="docutils literal">apply_to_binary_file</tt> (for files to
 be read in binary mode).</p>
 <p>As a silly example, this would make everything uppercase and totally break
 your website:</p>
-<div class="last"><pre class="code python"><a name="rest_code_4c87d886829f4b8abaad41fbc855433a-1"></a><span class="kn">import</span> <span class="nn">string</span>
-<a name="rest_code_4c87d886829f4b8abaad41fbc855433a-2"></a><span class="kn">from</span> <span class="nn">nikola.filters</span> <span class="kn">import</span> <span class="n">apply_to_text_file</span>
-<a name="rest_code_4c87d886829f4b8abaad41fbc855433a-3"></a><span class="n">FILTERS</span> <span class="o">=</span> <span class="p">{</span>
-<a name="rest_code_4c87d886829f4b8abaad41fbc855433a-4"></a>  <span class="s">".html"</span><span class="p">:</span> <span class="p">[</span><span class="n">apply_to_text_file</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">upper</span><span class="p">)]</span>
-<a name="rest_code_4c87d886829f4b8abaad41fbc855433a-5"></a><span class="p">}</span>
+<div class="last"><pre class="code python"><a name="rest_code_dde69aa95b7f47f9a5b25522fa9ef9a1-1"></a><span class="kn">import</span> <span class="nn">string</span>
+<a name="rest_code_dde69aa95b7f47f9a5b25522fa9ef9a1-2"></a><span class="kn">from</span> <span class="nn">nikola.filters</span> <span class="kn">import</span> <span class="n">apply_to_text_file</span>
+<a name="rest_code_dde69aa95b7f47f9a5b25522fa9ef9a1-3"></a><span class="n">FILTERS</span> <span class="o">=</span> <span class="p">{</span>
+<a name="rest_code_dde69aa95b7f47f9a5b25522fa9ef9a1-4"></a>  <span class="s">".html"</span><span class="p">:</span> <span class="p">[</span><span class="n">apply_to_text_file</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">upper</span><span class="p">)]</span>
+<a name="rest_code_dde69aa95b7f47f9a5b25522fa9ef9a1-5"></a><span class="p">}</span>
 </pre></div>
 </div>
 <dl class="docutils">
@@ -1948,13 +1939,13 @@ To do so, please visit <a class="reference external" href="https://cards-dev.twi
 <p>You can specify the card type by using the <cite>card</cite> parameter in TWITTER_CARD.</p>
 <p>To enable and configure your use of Twitter Cards, please modify the
 corresponding lines in your <tt class="docutils literal">conf.py</tt>:</p>
-<pre class="code python"><a name="rest_code_c3c2ab239072470fa70baa0dc88fbf38-1"></a><span class="n">TWITTER_CARD</span> <span class="o">=</span> <span class="p">{</span>
-<a name="rest_code_c3c2ab239072470fa70baa0dc88fbf38-2"></a>    <span class="s">'use_twitter_cards'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>  <span class="c"># enable Twitter Cards</span>
-<a name="rest_code_c3c2ab239072470fa70baa0dc88fbf38-3"></a>    <span class="s">'card'</span><span class="p">:</span> <span class="s">'summary'</span><span class="p">,</span>          <span class="c"># Card type, you can also use 'summary_large_image',</span>
-<a name="rest_code_c3c2ab239072470fa70baa0dc88fbf38-4"></a>                                <span class="c"># see https://dev.twitter.com/cards/types</span>
-<a name="rest_code_c3c2ab239072470fa70baa0dc88fbf38-5"></a>    <span class="s">'site'</span><span class="p">:</span> <span class="s">'@website'</span><span class="p">,</span>         <span class="c"># twitter nick for the website</span>
-<a name="rest_code_c3c2ab239072470fa70baa0dc88fbf38-6"></a>    <span class="s">'creator'</span><span class="p">:</span> <span class="s">'@username'</span><span class="p">,</span>     <span class="c"># Username for the content creator / author.</span>
-<a name="rest_code_c3c2ab239072470fa70baa0dc88fbf38-7"></a><span class="p">}</span>
+<pre class="code python"><a name="rest_code_f10d9c2d27234ee697d1789910c48440-1"></a><span class="n">TWITTER_CARD</span> <span class="o">=</span> <span class="p">{</span>
+<a name="rest_code_f10d9c2d27234ee697d1789910c48440-2"></a>    <span class="s">'use_twitter_cards'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>  <span class="c"># enable Twitter Cards</span>
+<a name="rest_code_f10d9c2d27234ee697d1789910c48440-3"></a>    <span class="s">'card'</span><span class="p">:</span> <span class="s">'summary'</span><span class="p">,</span>          <span class="c"># Card type, you can also use 'summary_large_image',</span>
+<a name="rest_code_f10d9c2d27234ee697d1789910c48440-4"></a>                                <span class="c"># see https://dev.twitter.com/cards/types</span>
+<a name="rest_code_f10d9c2d27234ee697d1789910c48440-5"></a>    <span class="s">'site'</span><span class="p">:</span> <span class="s">'@website'</span><span class="p">,</span>         <span class="c"># twitter nick for the website</span>
+<a name="rest_code_f10d9c2d27234ee697d1789910c48440-6"></a>    <span class="s">'creator'</span><span class="p">:</span> <span class="s">'@username'</span><span class="p">,</span>     <span class="c"># Username for the content creator / author.</span>
+<a name="rest_code_f10d9c2d27234ee697d1789910c48440-7"></a><span class="p">}</span>
 </pre>
 </div>
 <div class="section" id="custom-plugins">
@@ -2084,7 +2075,7 @@ license you got it.</p>
     <a class="btn btn-fab btn-raised btn-material-indigo" target="_blank" href="handbook.rst" title="Código fuente">
         <i class="mdi-file-cloud-download"></i>
     </a>
-    
+
         </div>
 
 </div>
