@@ -7,14 +7,7 @@ article: http://ogp.me/ns/article#
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Upgrading to v6 | Material Theme Demo</title>
-<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/roboto.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/material.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/ripples.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Raleway%7CBangers" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://matuu.github.io/material-theme-nikola/stories/upgrading-to-v6.html">
@@ -40,7 +33,7 @@ need to change in your si">
 <nav class="navbar navbar-default header-panel shadow-z-3" role="navigation"><div class="container-fluid">
         <div class="row">
           <div class="col-xs-3">
-            <h1>
+            <h1 class="title-blog">
                 <a href="http://matuu.github.io/material-theme-nikola/">
                         <span id="blog-title">Material Theme Demo</span>
                     </a>
@@ -106,11 +99,11 @@ jinja-based theme, upgrading is probably a bad idea right now.</dd>
 using a custom theme. Also, some templates have been tweaked, but nothing should
 break for you.</p>
 <p>Facebook comments support changed the HTML tag to:</p>
-<pre class="code mako"><a name="rest_code_50ca983941ca4166ad9698fd9e4f8eea-1"></a><span class="x">&lt;html</span>
-<a name="rest_code_50ca983941ca4166ad9698fd9e4f8eea-2"></a><span class="cp">%</span><span class="k">if</span> <span class="n">comment_system</span> <span class="o">==</span> <span class="s">'facebook'</span><span class="p">:</span><span class="x"></span>
-<a name="rest_code_50ca983941ca4166ad9698fd9e4f8eea-3"></a><span class="x">xmlns:fb="http://ogp.me/ns/fb#"</span>
-<a name="rest_code_50ca983941ca4166ad9698fd9e4f8eea-4"></a><span class="cp">%</span><span class="k">endif</span><span class="x"></span>
-<a name="rest_code_50ca983941ca4166ad9698fd9e4f8eea-5"></a><span class="x">lang="</span><span class="cp">${</span><span class="n">lang</span><span class="cp">}</span><span class="x">"&gt;</span>
+<pre class="code mako"><a name="rest_code_93decf8785db42f6bbab4707526e838f-1"></a><span class="x">&lt;html</span>
+<a name="rest_code_93decf8785db42f6bbab4707526e838f-2"></a><span class="cp">%</span><span class="k">if</span> <span class="n">comment_system</span> <span class="o">==</span> <span class="s">'facebook'</span><span class="p">:</span><span class="x"></span>
+<a name="rest_code_93decf8785db42f6bbab4707526e838f-3"></a><span class="x">xmlns:fb="http://ogp.me/ns/fb#"</span>
+<a name="rest_code_93decf8785db42f6bbab4707526e838f-4"></a><span class="cp">%</span><span class="k">endif</span><span class="x"></span>
+<a name="rest_code_93decf8785db42f6bbab4707526e838f-5"></a><span class="x">lang="</span><span class="cp">${</span><span class="n">lang</span><span class="cp">}</span><span class="x">"&gt;</span>
 </pre>
 <p>If you do not want to use Facebook comments, you can leave the old <tt class="docutils literal">&lt;html
 <span class="pre">lang="${lang}"&gt;</span></tt> tag in and it will work just fine.</p>
@@ -134,22 +127,22 @@ should be <strong>exactly</strong> as before.</p>
 story short, anything that had a <tt class="docutils literal">True</tt> as the <tt class="docutils literal">use_in_feeds</tt>
 (last) value goes to <tt class="docutils literal">POSTS</tt> and anything with <tt class="docutils literal">False</tt> goes to
 <tt class="docutils literal">PAGES</tt>.  For example:</p>
-<pre class="code python"><a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-1"></a><span class="n">post_pages</span> <span class="o">=</span> <span class="p">(</span>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-2"></a>    <span class="p">(</span><span class="s">"posts/*.txt"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"post.tmpl"</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-3"></a>    <span class="p">(</span><span class="s">"stories/*.txt"</span><span class="p">,</span> <span class="s">"p"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-4"></a>    <span class="p">(</span><span class="s">"stories/*.html"</span><span class="p">,</span> <span class="s">"s"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-5"></a><span class="p">)</span>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-6"></a>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-7"></a><span class="c">### becomes ###</span>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-8"></a>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-9"></a><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-10"></a>    <span class="p">(</span><span class="s">"posts/*.txt"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"post.tmpl"</span><span class="p">),</span>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-11"></a><span class="p">)</span>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-12"></a>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-13"></a><span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-14"></a>    <span class="p">(</span><span class="s">"stories/*.txt"</span><span class="p">,</span> <span class="s">"p"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">),</span>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-15"></a>    <span class="p">(</span><span class="s">"stories/*.html"</span><span class="p">,</span> <span class="s">"s"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">),</span>
-<a name="rest_code_9f66237d46b543c7b4cde6f66ac02697-16"></a><span class="p">)</span>
+<pre class="code python"><a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-1"></a><span class="n">post_pages</span> <span class="o">=</span> <span class="p">(</span>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-2"></a>    <span class="p">(</span><span class="s">"posts/*.txt"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"post.tmpl"</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-3"></a>    <span class="p">(</span><span class="s">"stories/*.txt"</span><span class="p">,</span> <span class="s">"p"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-4"></a>    <span class="p">(</span><span class="s">"stories/*.html"</span><span class="p">,</span> <span class="s">"s"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-5"></a><span class="p">)</span>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-6"></a>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-7"></a><span class="c">### becomes ###</span>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-8"></a>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-9"></a><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-10"></a>    <span class="p">(</span><span class="s">"posts/*.txt"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"post.tmpl"</span><span class="p">),</span>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-11"></a><span class="p">)</span>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-12"></a>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-13"></a><span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-14"></a>    <span class="p">(</span><span class="s">"stories/*.txt"</span><span class="p">,</span> <span class="s">"p"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">),</span>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-15"></a>    <span class="p">(</span><span class="s">"stories/*.html"</span><span class="p">,</span> <span class="s">"s"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">),</span>
+<a name="rest_code_17b555dd2f0c4d1b844f918317ff5a50-16"></a><span class="p">)</span>
 </pre>
 <p>Also, you will get warnings. That doesn't mean things broke. They are
 there to inform you of what's happening, and that you need to tweak your
@@ -193,7 +186,7 @@ removed in v7, when those warnings will become errors.</p>
 
 </div>
 
-            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/ripples.min.js"></script><script src="../assets/js/material.min.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script src="../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>
+            <script src="../assets/js/all-nocdn.js"></script><script src="../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>
 
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly

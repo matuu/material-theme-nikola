@@ -7,14 +7,7 @@ article: http://ogp.me/ns/article#
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Listings Demo | Material Theme Demo</title>
-<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/roboto.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/material.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/ripples.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Raleway%7CBangers" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://matuu.github.io/material-theme-nikola/stories/listings-demo.html">
@@ -48,7 +41,7 @@ if __name__ == &quot;__main__&quot;">
 <nav class="navbar navbar-default header-panel shadow-z-3" role="navigation"><div class="container-fluid">
         <div class="row">
           <div class="col-xs-3">
-            <h1>
+            <h1 class="title-blog">
                 <a href="http://matuu.github.io/material-theme-nikola/">
                         <span id="blog-title">Material Theme Demo</span>
                     </a>
@@ -76,17 +69,17 @@ if __name__ == &quot;__main__&quot;">
     <div>
 <p>Nikola intends to let you show code easily via listings:</p>
 <p><a class="reference external" href="../listings/hello.py.html">hello.py</a></p>
-<pre class="code python"><a name="rest_code_15358b7811a6452289129165f7a387c9-1"></a><span class="c">#!/usr/bin/python</span>
-<a name="rest_code_15358b7811a6452289129165f7a387c9-2"></a>
-<a name="rest_code_15358b7811a6452289129165f7a387c9-3"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a name="rest_code_15358b7811a6452289129165f7a387c9-4"></a>
-<a name="rest_code_15358b7811a6452289129165f7a387c9-5"></a>
-<a name="rest_code_15358b7811a6452289129165f7a387c9-6"></a><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'world'</span><span class="p">):</span>
-<a name="rest_code_15358b7811a6452289129165f7a387c9-7"></a>    <span class="n">greeting</span> <span class="o">=</span> <span class="s">"hello "</span> <span class="o">+</span> <span class="n">name</span>
-<a name="rest_code_15358b7811a6452289129165f7a387c9-8"></a>    <span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
-<a name="rest_code_15358b7811a6452289129165f7a387c9-9"></a>
-<a name="rest_code_15358b7811a6452289129165f7a387c9-10"></a><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-<a name="rest_code_15358b7811a6452289129165f7a387c9-11"></a>    <span class="n">hello</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<pre class="code python"><a name="rest_code_734d74dec6504218b931b42c6ba52aca-1"></a><span class="c">#!/usr/bin/python</span>
+<a name="rest_code_734d74dec6504218b931b42c6ba52aca-2"></a>
+<a name="rest_code_734d74dec6504218b931b42c6ba52aca-3"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a name="rest_code_734d74dec6504218b931b42c6ba52aca-4"></a>
+<a name="rest_code_734d74dec6504218b931b42c6ba52aca-5"></a>
+<a name="rest_code_734d74dec6504218b931b42c6ba52aca-6"></a><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'world'</span><span class="p">):</span>
+<a name="rest_code_734d74dec6504218b931b42c6ba52aca-7"></a>    <span class="n">greeting</span> <span class="o">=</span> <span class="s">"hello "</span> <span class="o">+</span> <span class="n">name</span>
+<a name="rest_code_734d74dec6504218b931b42c6ba52aca-8"></a>    <span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+<a name="rest_code_734d74dec6504218b931b42c6ba52aca-9"></a>
+<a name="rest_code_734d74dec6504218b931b42c6ba52aca-10"></a><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+<a name="rest_code_734d74dec6504218b931b42c6ba52aca-11"></a>    <span class="n">hello</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
 </pre>
 </div>
     </div>
@@ -124,7 +117,7 @@ if __name__ == &quot;__main__&quot;">
 
 </div>
 
-            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/ripples.min.js"></script><script src="../assets/js/material.min.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script src="../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>
+            <script src="../assets/js/all-nocdn.js"></script><script src="../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>
 
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly

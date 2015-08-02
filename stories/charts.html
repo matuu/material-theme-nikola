@@ -7,14 +7,7 @@ article: http://ogp.me/ns/article#
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Charts | Material Theme Demo</title>
-<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/roboto.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/material.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/ripples.min.css" rel="stylesheet" type="text/css">
-<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Raleway%7CBangers" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://matuu.github.io/material-theme-nikola/stories/charts.html">
@@ -39,7 +32,7 @@ with little effort, and i's even semi-interactive (hover your pointer over the l
 <nav class="navbar navbar-default header-panel shadow-z-3" role="navigation"><div class="container-fluid">
         <div class="row">
           <div class="col-xs-3">
-            <h1>
+            <h1 class="title-blog">
                 <a href="http://matuu.github.io/material-theme-nikola/">
                         <span id="blog-title">Material Theme Demo</span>
                     </a>
@@ -67,19 +60,19 @@ with little effort, and i's even semi-interactive (hover your pointer over the l
     <div>
 <p>If you are using reStructuredText and install pygal, Nikola has support for rather nice charts
 with little effort, and i's even semi-interactive (hover your pointer over the legend!):</p>
-<pre class="code rest"><a name="rest_code_68c47dbed4c94248b9ea9113b076728f-1"></a><span class="p">..</span> <span class="ow">chart</span><span class="p">::</span> StackedLine
-<a name="rest_code_68c47dbed4c94248b9ea9113b076728f-2"></a>   <span class="nc">:title:</span> <span class="nf">'Browser usage evolution (in %)'</span>
-<a name="rest_code_68c47dbed4c94248b9ea9113b076728f-3"></a>   <span class="nc">:fill:</span> <span class="nf">True</span>
-<a name="rest_code_68c47dbed4c94248b9ea9113b076728f-4"></a>   <span class="nc">:x_labels:</span> <span class="nf">['2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012']</span>
-<a name="rest_code_68c47dbed4c94248b9ea9113b076728f-5"></a>   <span class="nc">:width:</span> <span class="nf">600</span>
-<a name="rest_code_68c47dbed4c94248b9ea9113b076728f-6"></a>   <span class="nc">:height:</span> <span class="nf">400</span>
-<a name="rest_code_68c47dbed4c94248b9ea9113b076728f-7"></a>   <span class="nc">:explicit_size:</span> <span class="nf">True</span>
-<a name="rest_code_68c47dbed4c94248b9ea9113b076728f-8"></a>   <span class="nc">:style:</span> <span class="nf">BlueStyle</span>
-<a name="rest_code_68c47dbed4c94248b9ea9113b076728f-9"></a>
-<a name="rest_code_68c47dbed4c94248b9ea9113b076728f-10"></a>   ('Others',  [14.2, 15.4, 15.3,  8.9,    9, 10.4,  8.9,  5.8,  6.7,  6.8,  7.5])
-<a name="rest_code_68c47dbed4c94248b9ea9113b076728f-11"></a>   ('IE',      [85.8, 84.6, 84.7, 74.5,   66, 58.6, 54.7, 44.8, 36.2, 26.6, 20.1])
-<a name="rest_code_68c47dbed4c94248b9ea9113b076728f-12"></a>   ('Firefox', [None, None, None, 16.6,   25,   31, 36.4, 45.5, 46.3, 42.8, 37.1])
-<a name="rest_code_68c47dbed4c94248b9ea9113b076728f-13"></a>   ('Chrome',  [None, None, None, None, None, None,    0,  3.9, 10.8, 23.8, 35.3])
+<pre class="code rest"><a name="rest_code_0277717c77074a4d97e023d309404d4c-1"></a><span class="p">..</span> <span class="ow">chart</span><span class="p">::</span> StackedLine
+<a name="rest_code_0277717c77074a4d97e023d309404d4c-2"></a>   <span class="nc">:title:</span> <span class="nf">'Browser usage evolution (in %)'</span>
+<a name="rest_code_0277717c77074a4d97e023d309404d4c-3"></a>   <span class="nc">:fill:</span> <span class="nf">True</span>
+<a name="rest_code_0277717c77074a4d97e023d309404d4c-4"></a>   <span class="nc">:x_labels:</span> <span class="nf">['2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012']</span>
+<a name="rest_code_0277717c77074a4d97e023d309404d4c-5"></a>   <span class="nc">:width:</span> <span class="nf">600</span>
+<a name="rest_code_0277717c77074a4d97e023d309404d4c-6"></a>   <span class="nc">:height:</span> <span class="nf">400</span>
+<a name="rest_code_0277717c77074a4d97e023d309404d4c-7"></a>   <span class="nc">:explicit_size:</span> <span class="nf">True</span>
+<a name="rest_code_0277717c77074a4d97e023d309404d4c-8"></a>   <span class="nc">:style:</span> <span class="nf">BlueStyle</span>
+<a name="rest_code_0277717c77074a4d97e023d309404d4c-9"></a>
+<a name="rest_code_0277717c77074a4d97e023d309404d4c-10"></a>   ('Others',  [14.2, 15.4, 15.3,  8.9,    9, 10.4,  8.9,  5.8,  6.7,  6.8,  7.5])
+<a name="rest_code_0277717c77074a4d97e023d309404d4c-11"></a>   ('IE',      [85.8, 84.6, 84.7, 74.5,   66, 58.6, 54.7, 44.8, 36.2, 26.6, 20.1])
+<a name="rest_code_0277717c77074a4d97e023d309404d4c-12"></a>   ('Firefox', [None, None, None, 16.6,   25,   31, 36.4, 45.5, 46.3, 42.8, 37.1])
+<a name="rest_code_0277717c77074a4d97e023d309404d4c-13"></a>   ('Chrome',  [None, None, None, None, None, None,    0,  3.9, 10.8, 23.8, 35.3])
 </pre>
 <div style="text-align: center;"><div class="text-error">In order to use the Chart directive, you must install the "pygal" Python package.</div></div>
 <p>Here's how it works:</p>
@@ -129,7 +122,7 @@ take this example and tweak stuff.</p>
 
 </div>
 
-            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/ripples.min.js"></script><script src="../assets/js/material.min.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script src="../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>
+            <script src="../assets/js/all-nocdn.js"></script><script src="../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>
 
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly
