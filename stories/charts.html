@@ -8,7 +8,6 @@ article: http://ogp.me/ns/article#
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Charts | Material Theme Demo</title>
 <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Raleway%7CBangers" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://matuu.github.io/material-theme-nikola/stories/charts.html">
 <!--[if lt IE 9]>
@@ -60,19 +59,19 @@ with little effort, and i's even semi-interactive (hover your pointer over the l
     <div>
 <p>If you are using reStructuredText and install pygal, Nikola has support for rather nice charts
 with little effort, and i's even semi-interactive (hover your pointer over the legend!):</p>
-<pre class="code rest"><a name="rest_code_0277717c77074a4d97e023d309404d4c-1"></a><span class="p">..</span> <span class="ow">chart</span><span class="p">::</span> StackedLine
-<a name="rest_code_0277717c77074a4d97e023d309404d4c-2"></a>   <span class="nc">:title:</span> <span class="nf">'Browser usage evolution (in %)'</span>
-<a name="rest_code_0277717c77074a4d97e023d309404d4c-3"></a>   <span class="nc">:fill:</span> <span class="nf">True</span>
-<a name="rest_code_0277717c77074a4d97e023d309404d4c-4"></a>   <span class="nc">:x_labels:</span> <span class="nf">['2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012']</span>
-<a name="rest_code_0277717c77074a4d97e023d309404d4c-5"></a>   <span class="nc">:width:</span> <span class="nf">600</span>
-<a name="rest_code_0277717c77074a4d97e023d309404d4c-6"></a>   <span class="nc">:height:</span> <span class="nf">400</span>
-<a name="rest_code_0277717c77074a4d97e023d309404d4c-7"></a>   <span class="nc">:explicit_size:</span> <span class="nf">True</span>
-<a name="rest_code_0277717c77074a4d97e023d309404d4c-8"></a>   <span class="nc">:style:</span> <span class="nf">BlueStyle</span>
-<a name="rest_code_0277717c77074a4d97e023d309404d4c-9"></a>
-<a name="rest_code_0277717c77074a4d97e023d309404d4c-10"></a>   ('Others',  [14.2, 15.4, 15.3,  8.9,    9, 10.4,  8.9,  5.8,  6.7,  6.8,  7.5])
-<a name="rest_code_0277717c77074a4d97e023d309404d4c-11"></a>   ('IE',      [85.8, 84.6, 84.7, 74.5,   66, 58.6, 54.7, 44.8, 36.2, 26.6, 20.1])
-<a name="rest_code_0277717c77074a4d97e023d309404d4c-12"></a>   ('Firefox', [None, None, None, 16.6,   25,   31, 36.4, 45.5, 46.3, 42.8, 37.1])
-<a name="rest_code_0277717c77074a4d97e023d309404d4c-13"></a>   ('Chrome',  [None, None, None, None, None, None,    0,  3.9, 10.8, 23.8, 35.3])
+<pre class="code rest"><a name="rest_code_1f46131991494f7db400f86f6a57a745-1"></a><span class="p">..</span> <span class="ow">chart</span><span class="p">::</span> StackedLine
+<a name="rest_code_1f46131991494f7db400f86f6a57a745-2"></a>   <span class="nc">:title:</span> <span class="nf">'Browser usage evolution (in %)'</span>
+<a name="rest_code_1f46131991494f7db400f86f6a57a745-3"></a>   <span class="nc">:fill:</span> <span class="nf">True</span>
+<a name="rest_code_1f46131991494f7db400f86f6a57a745-4"></a>   <span class="nc">:x_labels:</span> <span class="nf">['2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012']</span>
+<a name="rest_code_1f46131991494f7db400f86f6a57a745-5"></a>   <span class="nc">:width:</span> <span class="nf">600</span>
+<a name="rest_code_1f46131991494f7db400f86f6a57a745-6"></a>   <span class="nc">:height:</span> <span class="nf">400</span>
+<a name="rest_code_1f46131991494f7db400f86f6a57a745-7"></a>   <span class="nc">:explicit_size:</span> <span class="nf">True</span>
+<a name="rest_code_1f46131991494f7db400f86f6a57a745-8"></a>   <span class="nc">:style:</span> <span class="nf">BlueStyle</span>
+<a name="rest_code_1f46131991494f7db400f86f6a57a745-9"></a>
+<a name="rest_code_1f46131991494f7db400f86f6a57a745-10"></a>   ('Others',  [14.2, 15.4, 15.3,  8.9,    9, 10.4,  8.9,  5.8,  6.7,  6.8,  7.5])
+<a name="rest_code_1f46131991494f7db400f86f6a57a745-11"></a>   ('IE',      [85.8, 84.6, 84.7, 74.5,   66, 58.6, 54.7, 44.8, 36.2, 26.6, 20.1])
+<a name="rest_code_1f46131991494f7db400f86f6a57a745-12"></a>   ('Firefox', [None, None, None, 16.6,   25,   31, 36.4, 45.5, 46.3, 42.8, 37.1])
+<a name="rest_code_1f46131991494f7db400f86f6a57a745-13"></a>   ('Chrome',  [None, None, None, None, None, None,    0,  3.9, 10.8, 23.8, 35.3])
 </pre>
 <div style="text-align: center;"><div class="text-error">In order to use the Chart directive, you must install the "pygal" Python package.</div></div>
 <p>Here's how it works:</p>
