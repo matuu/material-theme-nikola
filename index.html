@@ -36,9 +36,9 @@ article: http://ogp.me/ns/article#
 </nav><div class="container-fluid main" id="content" role="main">
         <div class="row">
             <nav class="col-xs-3 menu"><ul>
-<li class="withripple" data-location="/archive.html"><a href="archive.html"><div class="ripple-wrapper"></div>Archivo</a></li>
-                <li class="withripple" data-location="/categories/index.html"><a href="categories/index.html"><div class="ripple-wrapper"></div>Etiquetas</a></li>
-                <li class="withripple" data-location="/rss.xml"><a href="rss.xml"><div class="ripple-wrapper"></div>Canal RSS</a></li>
+<li class="withripple"><a href="archive.html"><div class="ripple-wrapper"></div>Archivo</a></li>
+                <li class="withripple"><a href="categories/index.html"><div class="ripple-wrapper"></div>Etiquetas</a></li>
+                <li class="withripple"><a href="rss.xml"><div class="ripple-wrapper"></div>Canal RSS</a></li>
 
                     
                 </ul>
@@ -119,16 +119,11 @@ and build a site using it. Congratulations!</p>
                 $.material.init();
             });
 
-             $(window).on("resize", function() {
+            $(window).on("resize", function() {
                 $("html, body").height($(window).height());
                 $(".main, .menu").height($(window).height() - $(".header-panel").outerHeight() - 76 ); // footer margin: $("footer.footer").outerHeight()
                 $(".posts-material").height($(window).height());
-              }).trigger("resize");
-
-             $(".menu li").click(function() {
-                if (!$(this).data("location")) return;
-                window.location.href = $(this).data("location");
-            });
+            }).trigger("resize");
         </script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("es");
     fancydates(0, "YYYY-MM-DD HH:mm");
