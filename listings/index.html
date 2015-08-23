@@ -60,10 +60,20 @@ article: http://ogp.me/ns/article#
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Material Theme Demo credits</h4>
-              </div>
+                <h4 class="modal-title">Nikola Tesla</h4>
+                <div>
+                    
+<img class="img-circle" style="float:left;margin:10px 20px 10px 0px;max-height:200px;" src="../images/avatar.jpg"><p>
+Nikola Tesla (Serbian Cyrillic: Никола Тесла; 10 July 1856 – 7 January 1943) was a Serbian American inventor,
+electrical engineer, mechanical engineer, physicist, and futurist best known for his contributions
+to the design of the modern alternating current (AC) electricity supply system.
+</p>
+
+                </div>
+                <hr>
+</div>
               <div class="modal-body">
-                    Contents © 2015         <a href="mailto:matu.varela@gmail.com">matuu</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+                    Contents © 2015         <a href="mailto:nikoa@gmail.com">Nikola Tesla</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
                     
               </div>
               <div class="modal-footer">
@@ -74,14 +84,49 @@ article: http://ogp.me/ns/article#
         </div>
         <div class="source-button">
         </div>
-
+        <div class="kc_fab_wrapper"></div>
 </div>
 
             <script src="../assets/js/all-nocdn.js"></script><script src="../assets/js/colorbox-i18n/jquery.colorbox-es.js"></script><script>
+                var links = [
+                        {
+                            "bgcolor": "#F44336",    
+                            "icon": "<i class='fa fa-share-square-o'></i>",    
+                        },
+                        {
+                            "url": "https://twitter.com/",    
+                            "bgcolor": "#55ACEE",    
+                            "target": "_blank",    
+                            "color": "#fffff",    
+                            "icon": "<i class='fa fa-twitter'></i>",    
+                        },
+                        {
+                            "url": "https://github.com/",    
+                            "bgcolor": "#666666",    
+                            "target": "_blank",    
+                            "color": "#fffff",    
+                            "icon": "<i class='fa fa-github-square'></i>",    
+                        },
+                        {
+                            "url": "https://plus.google.com/",    
+                            "bgcolor": "#DB4A39",    
+                            "target": "_blank",    
+                            "color": "#fffff",    
+                            "icon": "<i class='fa fa-google-plus'></i>",    
+                        },
+                        {
+                            "url": "https://www.facebook.com",    
+                            "bgcolor": "#3B5998",    
+                            "target": "_blank",    
+                            "color": "#fffff",    
+                            "icon": "<i class='fa fa-facebook'></i>",    
+                        },
+                ];
 
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly
                 $.material.init();
+                    $('.kc_fab_wrapper').kc_fab(links);
             });
 
             $(window).on("resize", function() {
