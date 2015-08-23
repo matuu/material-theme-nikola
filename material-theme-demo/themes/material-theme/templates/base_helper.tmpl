@@ -113,16 +113,11 @@ lang="{{ lang }}">
                 $.material.init();
             });
 
-             $(window).on("resize", function() {
+            $(window).on("resize", function() {
                 $("html, body").height($(window).height());
                 $(".main, .menu").height($(window).height() - $(".header-panel").outerHeight() - 76 ); // footer margin: $("footer.footer").outerHeight()
                 $(".posts-material").height($(window).height());
-              }).trigger("resize");
-
-             $(".menu li").click(function() {
-                if (!$(this).data("location")) return;
-                window.location.href = $(this).data("location");
-            });
+            }).trigger("resize");
         </script>
 {% endmacro %}
 
@@ -166,17 +161,17 @@ lang="{{ lang }}">
             <ul class="dropdown-menu">
             {% for suburl, text in url %}
                 {% if rel_link(permalink, suburl) == "#" %}
-                    <li class="active" data-location="{{ permalink }}"><a href="{{ permalink }}"><div class="ripple-wrapper"></div>{{ text }}</a></li>
+                    <li class="active"><a href="{{ permalink }}">{{ text }}</a></li>
                 {% else %}
-                    <li data-location="{{ suburl }}"><a href="{{ suburl }}"><div class="ripple-wrapper"></div>{{ text }}</a></li>
+                    <li><a href="{{ suburl }}">{{ text }}</a></li>
                 {% endif %}
             {% endfor %}
             </ul>
         {% else %}
             {% if rel_link(permalink, url) == "#" %}
-                <li class="withripple active" data-location="{{ permalink }}"><a href="{{ permalink }}"><div  class="ripple-wrapper"></div>{{ text }}</a></li>
+                <li class="withripple active"><a href="{{ permalink }}">{{ text }}</a></li>
             {% else %}
-                <li class="withripple" data-location="{{ url }}"><a href="{{ url }}"><div class="ripple-wrapper"></div>{{ text }}</a></li>
+                <li class="withripple"><a href="{{ url }}">{{ text }}</a></li>
             {% endif %}
         {% endif %}
     {% endfor %}

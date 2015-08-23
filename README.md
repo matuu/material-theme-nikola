@@ -15,9 +15,9 @@ That is all!
 
 ## Customization
 
-#### Navbar's color schema 
+#### Navbar color schema 
 
-In conf.py file:
+In conf.py:
 
     GLOBAL_CONTEXT = {                                                               
          'header_color': 'default'                                                    
@@ -25,11 +25,11 @@ In conf.py file:
 
 Options available:
 
-* default or primary
-* success
-* info
-* warning
-* danger
+* `default` or `primary`
+* `success`
+* `info`
+* `warning`
+* `danger`
 
 ![headers examples](https://github.com/matuu/material-theme-nikola/blob/master/screenshots/navbars.png)
 
