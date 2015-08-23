@@ -43,12 +43,9 @@ article: http://ogp.me/ns/article#
 </nav><div class="container-fluid main" id="content" role="main">
         <div class="row">
             <nav class="col-xs-3 menu"><ul>
-<li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//archive.html">Archivo<div class="ripple-wrapper"></div>
-</li>
-                <li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//categories/index.html">Etiquetas<div class="ripple-wrapper"></div>
-</li>
-                <li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//rss.xml">Canal RSS<div class="ripple-wrapper"></div>
-</li>
+<li class="withripple" data-location="/archive.html"><a href="../../archive.html"><div class="ripple-wrapper"></div>Archivo</a></li>
+                <li class="withripple" data-location="/categories/index.html"><a href="../../categories/index.html"><div class="ripple-wrapper"></div>Etiquetas</a></li>
+                <li class="withripple" data-location="/rss.xml"><a href="../../rss.xml"><div class="ripple-wrapper"></div>Canal RSS</a></li>
 
                     
                 </ul>
@@ -132,20 +129,14 @@ article: http://ogp.me/ns/article#
               }).trigger("resize");
 
              $(".menu li").click(function() {
-                // Menu
-                if (!$(this).data("target")) return;
-                if ($(this).is(".active")) return;
-                $(".menu li").not($(this)).removeClass("active");
-                window.page = $(this).data("target");
-                setTimeout(function() {
-                    window.location.href= window.page;
-                }, 500);
+                if (!$(this).data("location")) return;
+                window.location.href = $(this).data("location");
             });
         </script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("es");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script src="../../assets/js/flowr.plugin.js"></script><script>
-jsonContent = [{"url": "tesla4_lg.jpg", "title": "Tesla4 lg", "size": {"h": 180, "w": 128}, "url_thumb": "tesla4_lg.thumbnail.jpg"}, {"url": "tesla_conducts_lg.jpg", "title": "Tesla conducts lg", "size": {"h": 180, "w": 128}, "url_thumb": "tesla_conducts_lg.thumbnail.jpg"}, {"url": "tesla_lightning1_lg.jpg", "title": "Tesla lightning1 lg", "size": {"h": 129, "w": 180}, "url_thumb": "tesla_lightning1_lg.thumbnail.jpg"}, {"url": "tesla_lightning2_lg.jpg", "title": "Tesla lightning2 lg", "size": {"h": 131, "w": 180}, "url_thumb": "tesla_lightning2_lg.thumbnail.jpg"}, {"url": "tesla_tower1_lg.jpg", "title": "Tesla tower1 lg", "size": {"h": 125, "w": 180}, "url_thumb": "tesla_tower1_lg.thumbnail.jpg"}];
+jsonContent = [{"size": {"h": 452, "w": 322}, "title": "Tesla4 lg", "url": "tesla4_lg.jpg", "url_thumb": "tesla4_lg.thumbnail.jpg"}, {"size": {"h": 452, "w": 322}, "title": "Tesla conducts lg", "url": "tesla_conducts_lg.jpg", "url_thumb": "tesla_conducts_lg.thumbnail.jpg"}, {"size": {"h": 288, "w": 399}, "title": "Tesla lightning1 lg", "url": "tesla_lightning1_lg.jpg", "url_thumb": "tesla_lightning1_lg.thumbnail.jpg"}, {"size": {"h": 324, "w": 445}, "title": "Tesla lightning2 lg", "url": "tesla_lightning2_lg.jpg", "url_thumb": "tesla_lightning2_lg.thumbnail.jpg"}, {"size": {"h": 275, "w": 395}, "title": "Tesla tower1 lg", "url": "tesla_tower1_lg.jpg", "url_thumb": "tesla_tower1_lg.thumbnail.jpg"}];
 $("#gallery_container").flowr({
         data : jsonContent,
         height : 180*.6,

@@ -41,12 +41,9 @@ article: http://ogp.me/ns/article#
 </nav><div class="container-fluid main" id="content" role="main">
         <div class="row">
             <nav class="col-xs-3 menu"><ul>
-<li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//archive.html">Archivo<div class="ripple-wrapper"></div>
-</li>
-                <li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//categories/index.html">Etiquetas<div class="ripple-wrapper"></div>
-</li>
-                <li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//rss.xml">Canal RSS<div class="ripple-wrapper"></div>
-</li>
+<li class="withripple" data-location="/archive.html"><a href="../archive.html"><div class="ripple-wrapper"></div>Archivo</a></li>
+                <li class="withripple" data-location="/categories/index.html"><a href="../categories/index.html"><div class="ripple-wrapper"></div>Etiquetas</a></li>
+                <li class="withripple" data-location="/rss.xml"><a href="../rss.xml"><div class="ripple-wrapper"></div>Canal RSS</a></li>
 
                     
                 </ul>
@@ -56,17 +53,17 @@ article: http://ogp.me/ns/article#
 <hr></header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
 <p>Nikola intends to let you do slideshows easily:</p>
-<div id="slides_25e305eeb55c45d385518970a8c1e562" class="carousel slide">
+<div id="slides_6b244ebf74e64c3d99b8717f46b4139f" class="carousel slide">
     <ol class="carousel-indicators">
-<li data-target="#slides_25e305eeb55c45d385518970a8c1e562" data-slide-to="0" class="active">
+<li data-target="#slides_6b244ebf74e64c3d99b8717f46b4139f" data-slide-to="0" class="active">
             </li>
-<li data-target="#slides_25e305eeb55c45d385518970a8c1e562" data-slide-to="1">
+<li data-target="#slides_6b244ebf74e64c3d99b8717f46b4139f" data-slide-to="1">
             </li>
-<li data-target="#slides_25e305eeb55c45d385518970a8c1e562" data-slide-to="2">
+<li data-target="#slides_6b244ebf74e64c3d99b8717f46b4139f" data-slide-to="2">
             </li>
-<li data-target="#slides_25e305eeb55c45d385518970a8c1e562" data-slide-to="3">
+<li data-target="#slides_6b244ebf74e64c3d99b8717f46b4139f" data-slide-to="3">
             </li>
-<li data-target="#slides_25e305eeb55c45d385518970a8c1e562" data-slide-to="4">
+<li data-target="#slides_6b244ebf74e64c3d99b8717f46b4139f" data-slide-to="4">
     </li>
 </ol>
 <div class="carousel-inner">
@@ -76,10 +73,10 @@ article: http://ogp.me/ns/article#
                 <div class="item"><img class=" shadow-z-3" src="../galleries/demo/tesla_lightning1_lg.jpg" alt="" style="margin: 0 auto 0 auto;"></div>
                 <div class="item"><img class=" shadow-z-3" src="../galleries/demo/tesla_tower1_lg.jpg" alt="" style="margin: 0 auto 0 auto;"></div>
     </div>
-    <a class="btn btn-fab btn-raised btn-material-teal arrow-back" href="slides-demo.html#slides_25e305eeb55c45d385518970a8c1e562" data-slide="prev">
+    <a class="btn btn-fab btn-raised btn-material-teal arrow-back" href="slides-demo.html#slides_6b244ebf74e64c3d99b8717f46b4139f" data-slide="prev">
         <i class="mdi-navigation-arrow-back"></i>
     </a>
-    <a class="btn btn-fab btn-raised btn-material-teal arrow-forward" href="slides-demo.html#slides_25e305eeb55c45d385518970a8c1e562" data-slide="next">
+    <a class="btn btn-fab btn-raised btn-material-teal arrow-forward" href="slides-demo.html#slides_6b244ebf74e64c3d99b8717f46b4139f" data-slide="next">
         <i class="mdi-navigation-arrow-forward"></i>
     </a>
 </div>
@@ -133,14 +130,8 @@ article: http://ogp.me/ns/article#
               }).trigger("resize");
 
              $(".menu li").click(function() {
-                // Menu
-                if (!$(this).data("target")) return;
-                if ($(this).is(".active")) return;
-                $(".menu li").not($(this)).removeClass("active");
-                window.page = $(this).data("target");
-                setTimeout(function() {
-                    window.location.href= window.page;
-                }, 500);
+                if (!$(this).data("location")) return;
+                window.location.href = $(this).data("location");
             });
         </script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("es");

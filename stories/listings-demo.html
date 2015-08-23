@@ -52,12 +52,9 @@ if __name__ == &quot;__main__&quot;">
 </nav><div class="container-fluid main" id="content" role="main">
         <div class="row">
             <nav class="col-xs-3 menu"><ul>
-<li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//archive.html">Archivo<div class="ripple-wrapper"></div>
-</li>
-                <li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//categories/index.html">Etiquetas<div class="ripple-wrapper"></div>
-</li>
-                <li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//rss.xml">Canal RSS<div class="ripple-wrapper"></div>
-</li>
+<li class="withripple" data-location="/archive.html"><a href="../archive.html"><div class="ripple-wrapper"></div>Archivo</a></li>
+                <li class="withripple" data-location="/categories/index.html"><a href="../categories/index.html"><div class="ripple-wrapper"></div>Etiquetas</a></li>
+                <li class="withripple" data-location="/rss.xml"><a href="../rss.xml"><div class="ripple-wrapper"></div>Canal RSS</a></li>
 
                     
                 </ul>
@@ -68,17 +65,17 @@ if __name__ == &quot;__main__&quot;">
     <div>
 <p>Nikola intends to let you show code easily via listings:</p>
 <p><a class="reference external" href="../listings/hello.py.html">hello.py</a></p>
-<pre class="code python"><a name="rest_code_1e243098d43a473892b164549ff2380a-1"></a><span class="c">#!/usr/bin/python</span>
-<a name="rest_code_1e243098d43a473892b164549ff2380a-2"></a>
-<a name="rest_code_1e243098d43a473892b164549ff2380a-3"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a name="rest_code_1e243098d43a473892b164549ff2380a-4"></a>
-<a name="rest_code_1e243098d43a473892b164549ff2380a-5"></a>
-<a name="rest_code_1e243098d43a473892b164549ff2380a-6"></a><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'world'</span><span class="p">):</span>
-<a name="rest_code_1e243098d43a473892b164549ff2380a-7"></a>    <span class="n">greeting</span> <span class="o">=</span> <span class="s">"hello "</span> <span class="o">+</span> <span class="n">name</span>
-<a name="rest_code_1e243098d43a473892b164549ff2380a-8"></a>    <span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
-<a name="rest_code_1e243098d43a473892b164549ff2380a-9"></a>
-<a name="rest_code_1e243098d43a473892b164549ff2380a-10"></a><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-<a name="rest_code_1e243098d43a473892b164549ff2380a-11"></a>    <span class="n">hello</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<pre class="code python"><a name="rest_code_73c778f24c6f438f87b0bcee24e8020e-1"></a><span class="c">#!/usr/bin/python</span>
+<a name="rest_code_73c778f24c6f438f87b0bcee24e8020e-2"></a>
+<a name="rest_code_73c778f24c6f438f87b0bcee24e8020e-3"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a name="rest_code_73c778f24c6f438f87b0bcee24e8020e-4"></a>
+<a name="rest_code_73c778f24c6f438f87b0bcee24e8020e-5"></a>
+<a name="rest_code_73c778f24c6f438f87b0bcee24e8020e-6"></a><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'world'</span><span class="p">):</span>
+<a name="rest_code_73c778f24c6f438f87b0bcee24e8020e-7"></a>    <span class="n">greeting</span> <span class="o">=</span> <span class="s">"hello "</span> <span class="o">+</span> <span class="n">name</span>
+<a name="rest_code_73c778f24c6f438f87b0bcee24e8020e-8"></a>    <span class="k">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+<a name="rest_code_73c778f24c6f438f87b0bcee24e8020e-9"></a>
+<a name="rest_code_73c778f24c6f438f87b0bcee24e8020e-10"></a><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+<a name="rest_code_73c778f24c6f438f87b0bcee24e8020e-11"></a>    <span class="n">hello</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
 </pre>
 </div>
     </div>
@@ -130,14 +127,8 @@ if __name__ == &quot;__main__&quot;">
               }).trigger("resize");
 
              $(".menu li").click(function() {
-                // Menu
-                if (!$(this).data("target")) return;
-                if ($(this).is(".active")) return;
-                $(".menu li").not($(this)).removeClass("active");
-                window.page = $(this).data("target");
-                setTimeout(function() {
-                    window.location.href= window.page;
-                }, 500);
+                if (!$(this).data("location")) return;
+                window.location.href = $(this).data("location");
             });
         </script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("es");

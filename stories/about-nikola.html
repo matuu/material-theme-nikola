@@ -18,6 +18,7 @@ article: http://ogp.me/ns/article#
 <meta property="og:title" content="Nikola: it generates static">
 <meta property="og:url" content="http://matuu.github.io/material-theme-nikola/stories/about-nikola.html">
 <meta property="og:description" content="Hope you enjoy this software!
+
 Home page at http://getnikola.com
 Author's blog (and reason why Nikola exists): http://ralsina.me">
 <meta property="og:type" content="article">
@@ -43,12 +44,9 @@ Author's blog (and reason why Nikola exists): http://ralsina.me">
 </nav><div class="container-fluid main" id="content" role="main">
         <div class="row">
             <nav class="col-xs-3 menu"><ul>
-<li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//archive.html">Archivo<div class="ripple-wrapper"></div>
-</li>
-                <li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//categories/index.html">Etiquetas<div class="ripple-wrapper"></div>
-</li>
-                <li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//rss.xml">Canal RSS<div class="ripple-wrapper"></div>
-</li>
+<li class="withripple" data-location="/archive.html"><a href="../archive.html"><div class="ripple-wrapper"></div>Archivo</a></li>
+                <li class="withripple" data-location="/categories/index.html"><a href="../categories/index.html"><div class="ripple-wrapper"></div>Etiquetas</a></li>
+                <li class="withripple" data-location="/rss.xml"><a href="../rss.xml"><div class="ripple-wrapper"></div>Canal RSS</a></li>
 
                     
                 </ul>
@@ -114,14 +112,8 @@ Author's blog (and reason why Nikola exists): http://ralsina.me">
               }).trigger("resize");
 
              $(".menu li").click(function() {
-                // Menu
-                if (!$(this).data("target")) return;
-                if ($(this).is(".active")) return;
-                $(".menu li").not($(this)).removeClass("active");
-                window.page = $(this).data("target");
-                setTimeout(function() {
-                    window.location.href= window.page;
-                }, 500);
+                if (!$(this).data("location")) return;
+                window.location.href = $(this).data("location");
             });
         </script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("es");

@@ -18,9 +18,12 @@ article: http://ogp.me/ns/article#
 <meta property="og:title" content="Upgrading to v6">
 <meta property="og:url" content="http://matuu.github.io/material-theme-nikola/stories/upgrading-to-v6.html">
 <meta property="og:description" content="Version:
-7.4.1Nikola tries fairly hard to be compatible between versions. However, there were
+7.4.1
+
+
+Nikola tries fairly hard to be compatible between versions. However, there were
 a few areas which were getting clunky, and needed fxing. So, here's what you may
-need to change in your si">
+need to change in your">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2013-08-23T23:00:00-03:00">
 </head>
@@ -44,12 +47,9 @@ need to change in your si">
 </nav><div class="container-fluid main" id="content" role="main">
         <div class="row">
             <nav class="col-xs-3 menu"><ul>
-<li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//archive.html">Archivo<div class="ripple-wrapper"></div>
-</li>
-                <li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//categories/index.html">Etiquetas<div class="ripple-wrapper"></div>
-</li>
-                <li class="withripple" data-target="http://matuu.github.io/material-theme-nikola//rss.xml">Canal RSS<div class="ripple-wrapper"></div>
-</li>
+<li class="withripple" data-location="/archive.html"><a href="../archive.html"><div class="ripple-wrapper"></div>Archivo</a></li>
+                <li class="withripple" data-location="/categories/index.html"><a href="../categories/index.html"><div class="ripple-wrapper"></div>Etiquetas</a></li>
+                <li class="withripple" data-location="/rss.xml"><a href="../rss.xml"><div class="ripple-wrapper"></div>Canal RSS</a></li>
 
                     
                 </ul>
@@ -98,11 +98,11 @@ jinja-based theme, upgrading is probably a bad idea right now.</dd>
 using a custom theme. Also, some templates have been tweaked, but nothing should
 break for you.</p>
 <p>Facebook comments support changed the HTML tag to:</p>
-<pre class="code mako"><a name="rest_code_026b5c9ebfad44bda24ea2b1b0fd0163-1"></a><span class="x">&lt;html</span>
-<a name="rest_code_026b5c9ebfad44bda24ea2b1b0fd0163-2"></a><span class="cp">%</span><span class="k">if</span> <span class="n">comment_system</span> <span class="o">==</span> <span class="s">'facebook'</span><span class="p">:</span><span class="x"></span>
-<a name="rest_code_026b5c9ebfad44bda24ea2b1b0fd0163-3"></a><span class="x">xmlns:fb="http://ogp.me/ns/fb#"</span>
-<a name="rest_code_026b5c9ebfad44bda24ea2b1b0fd0163-4"></a><span class="cp">%</span><span class="k">endif</span><span class="x"></span>
-<a name="rest_code_026b5c9ebfad44bda24ea2b1b0fd0163-5"></a><span class="x">lang="</span><span class="cp">${</span><span class="n">lang</span><span class="cp">}</span><span class="x">"&gt;</span>
+<pre class="code mako"><a name="rest_code_b217267ef7db42efa5e640baece4c1c9-1"></a><span class="x">&lt;html</span>
+<a name="rest_code_b217267ef7db42efa5e640baece4c1c9-2"></a><span class="cp">%</span><span class="k">if</span> <span class="n">comment_system</span> <span class="o">==</span> <span class="s">'facebook'</span><span class="p">:</span><span class="x"></span>
+<a name="rest_code_b217267ef7db42efa5e640baece4c1c9-3"></a><span class="x">xmlns:fb="http://ogp.me/ns/fb#"</span>
+<a name="rest_code_b217267ef7db42efa5e640baece4c1c9-4"></a><span class="cp">%</span><span class="k">endif</span><span class="x"></span>
+<a name="rest_code_b217267ef7db42efa5e640baece4c1c9-5"></a><span class="x">lang="</span><span class="cp">${</span><span class="n">lang</span><span class="cp">}</span><span class="x">"&gt;</span>
 </pre>
 <p>If you do not want to use Facebook comments, you can leave the old <tt class="docutils literal">&lt;html
 <span class="pre">lang="${lang}"&gt;</span></tt> tag in and it will work just fine.</p>
@@ -126,22 +126,22 @@ should be <strong>exactly</strong> as before.</p>
 story short, anything that had a <tt class="docutils literal">True</tt> as the <tt class="docutils literal">use_in_feeds</tt>
 (last) value goes to <tt class="docutils literal">POSTS</tt> and anything with <tt class="docutils literal">False</tt> goes to
 <tt class="docutils literal">PAGES</tt>.  For example:</p>
-<pre class="code python"><a name="rest_code_6f0dacdd58bd415b93909e287be0646c-1"></a><span class="n">post_pages</span> <span class="o">=</span> <span class="p">(</span>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-2"></a>    <span class="p">(</span><span class="s">"posts/*.txt"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"post.tmpl"</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-3"></a>    <span class="p">(</span><span class="s">"stories/*.txt"</span><span class="p">,</span> <span class="s">"p"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-4"></a>    <span class="p">(</span><span class="s">"stories/*.html"</span><span class="p">,</span> <span class="s">"s"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-5"></a><span class="p">)</span>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-6"></a>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-7"></a><span class="c">### becomes ###</span>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-8"></a>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-9"></a><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-10"></a>    <span class="p">(</span><span class="s">"posts/*.txt"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"post.tmpl"</span><span class="p">),</span>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-11"></a><span class="p">)</span>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-12"></a>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-13"></a><span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-14"></a>    <span class="p">(</span><span class="s">"stories/*.txt"</span><span class="p">,</span> <span class="s">"p"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">),</span>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-15"></a>    <span class="p">(</span><span class="s">"stories/*.html"</span><span class="p">,</span> <span class="s">"s"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">),</span>
-<a name="rest_code_6f0dacdd58bd415b93909e287be0646c-16"></a><span class="p">)</span>
+<pre class="code python"><a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-1"></a><span class="n">post_pages</span> <span class="o">=</span> <span class="p">(</span>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-2"></a>    <span class="p">(</span><span class="s">"posts/*.txt"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"post.tmpl"</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-3"></a>    <span class="p">(</span><span class="s">"stories/*.txt"</span><span class="p">,</span> <span class="s">"p"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-4"></a>    <span class="p">(</span><span class="s">"stories/*.html"</span><span class="p">,</span> <span class="s">"s"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-5"></a><span class="p">)</span>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-6"></a>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-7"></a><span class="c">### becomes ###</span>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-8"></a>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-9"></a><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-10"></a>    <span class="p">(</span><span class="s">"posts/*.txt"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"post.tmpl"</span><span class="p">),</span>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-11"></a><span class="p">)</span>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-12"></a>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-13"></a><span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-14"></a>    <span class="p">(</span><span class="s">"stories/*.txt"</span><span class="p">,</span> <span class="s">"p"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">),</span>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-15"></a>    <span class="p">(</span><span class="s">"stories/*.html"</span><span class="p">,</span> <span class="s">"s"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">),</span>
+<a name="rest_code_3d821bfccbf446fc8544a5af0401ca43-16"></a><span class="p">)</span>
 </pre>
 <p>Also, you will get warnings. That doesn't mean things broke. They are
 there to inform you of what's happening, and that you need to tweak your
@@ -199,14 +199,8 @@ removed in v7, when those warnings will become errors.</p>
               }).trigger("resize");
 
              $(".menu li").click(function() {
-                // Menu
-                if (!$(this).data("target")) return;
-                if ($(this).is(".active")) return;
-                $(".menu li").not($(this)).removeClass("active");
-                window.page = $(this).data("target");
-                setTimeout(function() {
-                    window.location.href= window.page;
-                }, 500);
+                if (!$(this).data("location")) return;
+                window.location.href = $(this).data("location");
             });
         </script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("es");
