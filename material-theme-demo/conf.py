@@ -17,7 +17,7 @@ import time
 
 
 # Data about this site
-BLOG_AUTHOR = "matuu"  # (translatable)
+BLOG_AUTHOR = "Nikola Tesla"  # (translatable)
 BLOG_TITLE = "Material Theme Demo"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link
@@ -25,7 +25,7 @@ SITE_URL = "http://matuu.github.io/material-theme-nikola/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "https://example.com/"
-BLOG_EMAIL = "matu.varela@gmail.com"
+BLOG_EMAIL = "nikoa@gmail.com"
 BLOG_DESCRIPTION = "This is a demo site for Nikola."  # (translatable)
 
 # Nikola is multilingual!
@@ -1002,10 +1002,55 @@ LOGGING_HANDLERS = {
 # those.
 # TEMPLATE_FILTERS = {}
 
+BIOGRAPHY = """
+<img class="img-circle" style="float:left;margin:10px 20px 10px 0px;max-height:200px;" src="/images/avatar.jpg">
+<p>
+Nikola Tesla (Serbian Cyrillic: Никола Тесла; 10 July 1856 – 7 January 1943) was a Serbian American inventor,
+electrical engineer, mechanical engineer, physicist, and futurist best known for his contributions
+to the design of the modern alternating current (AC) electricity supply system.
+</p>
+"""
+
 # Put in global_context things you want available on all your templates.
 # It can be anything, data, functions, modules, etc.
 GLOBAL_CONTEXT = {
-    'header_color': 'default'
+    'header_color': 'default',
+    "author_avatar": "/images/avatar.jpg",
+    "biography": BIOGRAPHY,
+    "social_links": [
+        {
+            'bgcolor': "#F44336",
+            'icon': "<i class='fa fa-share-square-o'></i>"
+        },
+        {
+            "url": "https://twitter.com/",
+            "bgcolor": "#55ACEE",
+            "color": "#fffff",
+            "icon": "<i class='fa fa-twitter'></i>",
+            "target": "_blank"
+        },
+        {
+            "url": "https://github.com/",
+            "bgcolor": "#666666",
+            "color": "#fffff",
+            "icon": "<i class='fa fa-github-square'></i>",
+            "target": "_blank"
+        },
+        {
+            "url": "https://plus.google.com/",
+            "bgcolor": "#DB4A39",
+            "color": "#fffff",
+            "icon": "<i class='fa fa-google-plus'></i>",
+            "target": "_blank"
+        },
+        {
+            "url": "https://www.facebook.com",
+            "bgcolor": "#3B5998",
+            "color": "#fffff",
+            "icon": "<i class='fa fa-facebook'></i>",
+            "target": "_blank"
+        },
+    ]
 }
 
 # Add functions here and they will be called with template

@@ -117,6 +117,12 @@ article.postpage > header i, article.post-text > header i {
     margin-right: 2px;
 }
 
+span.vcard img.img-circle {
+    width: 30px;
+    position: relative;
+    top: -5px;
+}
+
 /* carousel */
 .carousel.slide {
     margin-bottom: 15px;
