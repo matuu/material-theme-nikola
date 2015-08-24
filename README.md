@@ -73,7 +73,7 @@ Options available:
         ]
     }
     
-![actions-links-collapsed](https://github.com/matuu/material-theme-nikola/blob/master/screenshots/actions-links1.png) ![actions-links-expanded](https://github.com/matuu/material-theme-nikola/blob/master/screenshots/actions-links2.png)
+![actions-links-gif](https://github.com/matuu/material-theme-nikola/blob/master/screenshots/actions-links.gif)
 
 
 ### Set author's avatar in header post
