@@ -101,9 +101,5 @@ Then, add it to `biography` viariable into `GLOBAL_CONTEXT`
         "biography": BIOGRAPHY,
     }
 
-![author's avatar](https://github.com/matuu/material-theme-nikola/blob/master/screenshots/biography-demo.png)
+![biography](https://github.com/matuu/material-theme-nikola/blob/master/screenshots/biography-demo.png)
 
-
-## TODO
-
-* More customizations options.
