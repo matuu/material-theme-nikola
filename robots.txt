@@ -1,2 +1,0 @@
-Sitemap: http://matuu.github.io/material-theme-nikola/sitemapindex.xml
-
