@@ -32,6 +32,10 @@ lang="{{ lang }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title|e }} | {{ blog_title|e }}</title>
 
+    {% if use_pace %}
+        <script src="/assets/js/pace.min.js"></script>
+        <link href="/assets/css/pace.css" rel="stylesheet" />
+    {% endif %}
     {{ html_stylesheets() }}
     {{ html_feedlinks() }}
     {% if permalink %}

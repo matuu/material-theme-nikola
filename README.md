@@ -87,7 +87,7 @@ Options available:
 
 ### Show author's biography into the dialog of credits (or footer)
 
-For convenience, first define a variable with the html biography.
+For convenience, first define a variable with html biography.
 
     BIOGRAPHY = """
     <img class="img-circle" style="float:left;margin:10px 20px 10px 0px;max-height:200px;" src="/images/avatar.jpg">
@@ -102,4 +102,34 @@ Then, add it to `biography` viariable into `GLOBAL_CONTEXT`
     }
 
 ![biography](https://github.com/matuu/material-theme-nikola/blob/master/screenshots/biography-demo.png)
+
+### Add Google Analytics script
+
+Define a variable with javascript block:
+ 
+ANALYTICS = """
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'XX-XXXXXXXXX-X', 'auto');
+  ga('send', 'pageview');
+</script>
+"""
+
+And add it to analytics variable into `GLOBAL_CONTEXT`:
+
+    GLOBAL_CONTEXT = {
+        "analytics": ANALYTICS,
+    }
+
+
+### Enable use of pace.js
+
+For enable use of [PACE](http://github.hubspot.com/pace/docs/welcome/), add a variable into GLOBAL_CONTEXT:
+
+    GLOBAL_CONTEXT = {
+        'use_pace': True,
+    }
 
